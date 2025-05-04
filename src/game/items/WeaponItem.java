@@ -1,4 +1,4 @@
-package game;
+package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.*;
@@ -10,6 +10,7 @@ import java.util.Random;
 /**
  * Class representing items that can be used as a weapon.
  * @author Adrian Kristanto
+ * modified by Serena Zhou
  */
 public class WeaponItem extends Item implements Weapon {
     private static final float DEFAULT_DAMAGE_MULTIPLIER = 1.0f;

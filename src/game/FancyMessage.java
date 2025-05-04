@@ -5,6 +5,7 @@ package game;
  * Font obtained from: <a href="https://patorjk.com/software/taag/#p=display&f=Georgia11&t=">link</a>
  * Font: Georgia11
  * @author Adrian Kristanto
+ * Modified by Serena Zhou
  */
 public class FancyMessage {
     public static String TITLE =

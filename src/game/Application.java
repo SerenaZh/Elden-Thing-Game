@@ -7,13 +7,29 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actor.OmenSheep;
+import game.actor.Player;
+import game.actor.SpiritGoat;
+import game.ground.*;
+import game.items.Seed;
+import game.items.Talisman;
 
 /**
- * The main class to setup and run the game.
+ * <h1>Application</h1>
+ * The main class to set up and run the game.
+ * <p>
+ *    Where the main application is initalised to run
+ * </p>
  * @author Adrian Kristanto
+ * @version 1.0
+ * @since 07/04/2025
+ * Modified by Serena Zhou
  */
 public class Application {
-
+    /**
+     * Main method that can run the program
+     * @param args
+     */
     public static void main(String[] args) {
 
         World world = new World(new Display());
@@ -51,11 +67,29 @@ public class Application {
             }
         }
 
-        Player player = new Player("Farmer", '@', 100);
+        Player player = new Player("Farmer", '@', 100, 200);
+        player.addItemToInventory(new Seed(new Inheritree()));
+        player.addItemToInventory(new Seed(new Bloodrose()));
         world.addPlayer(player, gameMap.at(23, 10));
 
         // game setup
         gameMap.at(24, 11).addItem(new Talisman());
+
+        OmenSheep sheep = new OmenSheep();
+        gameMap.at(16,6).addActor(sheep);
+
+//        SpiritGoat goat2 = new SpiritGoat();
+//        gameMap.at(22,13).addActor(goat2);
+//        SpiritGoat goat3 =  new SpiritGoat();
+//        gameMap.at(24,13).addActor(goat3);
+
+        OmenSheep sheep2 = new OmenSheep();
+        gameMap.at(22,13).addActor(sheep2);
+        OmenSheep sheep3 =  new OmenSheep();
+        gameMap.at(24,13).addActor(sheep3);
+
+        OmenSheep sheep4 = new OmenSheep();
+        gameMap.at(21,8).addActor(sheep4);
 
         world.run();
     }

@@ -1,0 +1,107 @@
+package game.actor;
+
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.StatusEffect;
+import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+import game.Capabilities;
+import game.Curable;
+import game.actions.CureAction;
+import game.ground.Inheritree;
+
+import java.util.List;
+
+/**
+ * Class representing the Omen Sheep that roams the land
+ * Omen sheep is a NonPlayableActor
+ * @author Serena Zhou
+ */
+public class OmenSheep extends NonPlayableActor implements Curable {
+//    /**
+//     * Countdown timer for when the Actor rots
+//     */
+//    private int rotTimer;
+    private StatusEffect rotEffect = new RotEffect(15);
+
+    /**
+     * Constructor for Omen Sheep
+     */
+    public OmenSheep() {
+        super("Omen Sheep", 'm', 75 );
+//        this.rotTimer = 15;
+        this.addStatusEffect(rotEffect);
+        this.addCapability(Capabilities.CURABLE);
+    }
+
+//    /**
+//     * Counts down the rot countdown timer
+//     */
+//    public void decreaseRotTimer(){
+//        rotTimer --;
+//    }
+//
+//    /**
+//     * Getter for the countdown time left
+//     * @return int of how many turns left until Sheep disappears
+//     */
+//    public int getRotTimer() {
+//        return rotTimer;
+//    }
+
+    /**
+     * Cures the Omen Sheep
+     * @param actor that is curing the Sheep
+     * @param map of the Game
+     * @return boolean if the sheep can be cured
+     */
+    @Override
+    public boolean cure(Actor actor, GameMap map) {
+        List<Exit> exits = map.locationOf(this).getExits();
+        for (Exit exit: exits) {
+            Location location = exit.getDestination();
+            location.setGround(new Inheritree());
+        }
+        return true;
+    }
+
+//    /**
+//     * Plays the turn of the OmenSheep
+//     * @param actions    collection of possible Actions for this Actor
+//     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+//     * @param map        the map containing the Actor
+//     * @param display    the I/O object to which messages may be written
+//     * @return the Action to be executed
+//     */
+//    @Override
+//    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+//        decreaseRotTimer();
+//        if (getRotTimer() <= 0) {
+//            this.unconscious(map);
+//            return new DoNothingAction();
+//        }
+//
+//        return super.playTurn(actions, lastAction, map, display);
+//    }
+
+    /**
+     * Gets the allowable actions that can be done to this Actor
+     * @param otherActor the Actor that might be performing the action
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return a list of Action objects that can be done to the Omen Sheep
+     */
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
+        ActionList actions = super.allowableActions(otherActor, direction, map);
+        if (otherActor.hasCapability(Capabilities.CURABLE)) {
+            actions.add(new CureAction(this));
+        }
+        return actions;
+    }
+
+}
