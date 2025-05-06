@@ -22,10 +22,6 @@ import java.util.List;
  * @author Serena Zhou
  */
 public class OmenSheep extends NonPlayableActor implements Curable {
-//    /**
-//     * Countdown timer for when the Actor rots
-//     */
-//    private int rotTimer;
     private StatusEffect rotEffect = new RotEffect(15);
 
     /**
@@ -33,25 +29,9 @@ public class OmenSheep extends NonPlayableActor implements Curable {
      */
     public OmenSheep() {
         super("Omen Sheep", 'm', 75 );
-//        this.rotTimer = 15;
         this.addStatusEffect(rotEffect);
         this.addCapability(Capabilities.CURABLE);
     }
-
-//    /**
-//     * Counts down the rot countdown timer
-//     */
-//    public void decreaseRotTimer(){
-//        rotTimer --;
-//    }
-//
-//    /**
-//     * Getter for the countdown time left
-//     * @return int of how many turns left until Sheep disappears
-//     */
-//    public int getRotTimer() {
-//        return rotTimer;
-//    }
 
     /**
      * Cures the Omen Sheep
@@ -69,25 +49,6 @@ public class OmenSheep extends NonPlayableActor implements Curable {
         return true;
     }
 
-//    /**
-//     * Plays the turn of the OmenSheep
-//     * @param actions    collection of possible Actions for this Actor
-//     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-//     * @param map        the map containing the Actor
-//     * @param display    the I/O object to which messages may be written
-//     * @return the Action to be executed
-//     */
-//    @Override
-//    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-//        decreaseRotTimer();
-//        if (getRotTimer() <= 0) {
-//            this.unconscious(map);
-//            return new DoNothingAction();
-//        }
-//
-//        return super.playTurn(actions, lastAction, map, display);
-//    }
-
     /**
      * Gets the allowable actions that can be done to this Actor
      * @param otherActor the Actor that might be performing the action
@@ -103,5 +64,4 @@ public class OmenSheep extends NonPlayableActor implements Curable {
         }
         return actions;
     }
-
 }

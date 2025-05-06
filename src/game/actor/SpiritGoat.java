@@ -16,10 +16,6 @@ import game.actions.CureAction;
  * @author Serena Zhou
  */
 public class SpiritGoat extends NonPlayableActor implements Curable {
-//    /**
-//     * Countdown timer for when the Actor rots
-//     */
-//    private int rotTimer;
     private RotEffect rotEffect = new RotEffect(10);
 
     /**
@@ -27,32 +23,9 @@ public class SpiritGoat extends NonPlayableActor implements Curable {
      */
     public SpiritGoat() {
         super("Spirit Goat", 'y', 50 );
-//        this.rotTimer = 10;
         this.addStatusEffect(rotEffect);
         this.addCapability(Capabilities.CURABLE);
     }
-//
-//    /**
-//     * Counts down the rot countdown timer
-//     */
-//    public void decreaseRotTimer(){
-//        rotTimer --;
-//    }
-//
-//    /**
-//     * Getter for the countdown time left
-//     * @return int of how many turns left until Sheep disappears
-//     */
-//    public int getRotTimer() {
-//        return rotTimer;
-//    }
-//
-//    /**
-//     * Resets the countdown timer for the rot
-//     */
-//    public void resetRotTimer() {
-//        this.rotTimer = 10;
-//    }
 
     /**
      * Cures the Spirit Goat
@@ -63,28 +36,8 @@ public class SpiritGoat extends NonPlayableActor implements Curable {
     @Override
     public boolean cure(Actor actor, GameMap map) {
         this.rotEffect.resetTimer(10);
-//        this.resetRotTimer();
         return true;
     }
-
-//    /**
-//     * Plays the turn of the SpiritGoat
-//     * @param actions    collection of possible Actions for this Actor
-//     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-//     * @param map        the map containing the Actor
-//     * @param display    the I/O object to which messages may be written
-//     * @return the Action to be executed
-//     */
-//    @Override
-//    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-//        decreaseRotTimer();
-//        if (getRotTimer() <= 0) {
-//            this.unconscious(map);
-//            return new DoNothingAction();
-//        }
-//
-//        return super.playTurn(actions, lastAction, map, display);
-//    }
 
     /**
      * Gets the allowable actions that can be done to this Actor
