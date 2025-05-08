@@ -12,6 +12,7 @@ import game.actor.Player;
 import game.ground.*;
 import game.items.Seed;
 import game.items.Talisman;
+import game.items.weapons.Broadsword;
 
 /**
  * <h1>Application</h1>
@@ -89,6 +90,8 @@ public class Application {
 
         OmenSheep sheep4 = new OmenSheep();
         gameMap.at(21,8).addActor(sheep4);
+
+        player.addItemToInventory(new Broadsword());
 
         world.run();
     }

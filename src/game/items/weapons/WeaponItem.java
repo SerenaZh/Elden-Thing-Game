@@ -1,10 +1,15 @@
 package game.items.weapons;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.*;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.AttackAction;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -12,7 +17,7 @@ import java.util.Random;
  * @author Adrian Kristanto
  * modified by Serena Zhou
  */
-public abstract class WeaponItem extends Item implements Weapon {
+public class WeaponItem extends Item implements Weapon {
     private static final float DEFAULT_DAMAGE_MULTIPLIER = 1.0f;
     private int damage;
     private int hitRate;
@@ -46,5 +51,28 @@ public abstract class WeaponItem extends Item implements Weapon {
         target.hurt(Math.round(damage * damageMultiplier));
 
         return String.format("%s %s %s for %d damage", attacker, verb, target, damage);
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location) {
+        ActionList actionList = super.allowableActions(otherActor, location);
+//        List<Exit> exits = location.getExits();
+//
+//        for (Exit exit: exits) {
+//
+//            if (exit.getDestination().containsAnActor()) {
+//                System.out.println("exit: " + exit.getDestination().getActor().toString());
+//                System.out.println(exit.getName());
+//            }
+//
+////            System.out.println(otherActor.toString());
+//            if (exit.getDestination().getActor() == otherActor) {
+//                String direction = exit.getName();
+//                actionList.add(new AttackAction(otherActor, direction, this));
+//                break;
+//            }
+//        }
+        actionList.add(new AttackAction(otherActor, "direction", this));
+        return actionList;
     }
 }

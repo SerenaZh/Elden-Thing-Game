@@ -8,8 +8,12 @@ import game.items.Buyable;
 public class BuyAction extends Action {
     private Buyable buyable;
 
+    public BuyAction(Buyable buyable){
+        this.buyable = buyable;
+    }
     @Override
     public String execute(Actor actor, GameMap map) {
+        buyable.purchase();
         return "";
     }
 

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.items.weapons.WeaponItem;
 
 /**
  * Class representing an action to attack
@@ -39,6 +40,7 @@ public class AttackAction extends Action {
      */
     public AttackAction(Actor target, String direction, Weapon weapon) {
         this.target = target;
+        System.out.println(direction);
         this.direction = direction;
         this.weapon = weapon;
     }
