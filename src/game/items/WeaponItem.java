@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Adrian Kristanto
  * modified by Serena Zhou
  */
-public class WeaponItem extends Item implements Weapon {
+public abstract class WeaponItem extends Item implements Weapon {
     private static final float DEFAULT_DAMAGE_MULTIPLIER = 1.0f;
     private int damage;
     private int hitRate;
