@@ -1,41 +1,49 @@
-package game.actor;
+package game.actor.npc;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.actors.StatusEffect;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
+import game.actor.RotEffect;
+import game.ground.Inheritree;
+
+import java.util.List;
 
 /**
- * Class representing the Spirit Goat that roams the land
- * Spirit Goat is a NonPlayableActor
+ * Class representing the Omen Sheep that roams the land
+ * Omen sheep is a NonPlayableActor
  * @author Serena Zhou
  */
-public class SpiritGoat extends NonPlayableActor implements Curable {
-    private RotEffect rotEffect = new RotEffect(10);
+public class OmenSheep extends NonPlayableActor implements Curable {
+    private StatusEffect rotEffect = new RotEffect(15);
 
     /**
-     * Constructor for the Spirit Goat
+     * Constructor for Omen Sheep
      */
-    public SpiritGoat() {
-        super("Spirit Goat", 'y', 50 );
+    public OmenSheep() {
+        super("Omen Sheep", 'm', 75 );
         this.addStatusEffect(rotEffect);
         this.addCapability(Capabilities.CURABLE);
     }
 
     /**
-     * Cures the Spirit Goat
-     * @param actor that is curing the goat
+     * Cures the Omen Sheep
+     * @param actor that is curing the Sheep
      * @param map of the Game
-     * @return boolean if the goat can be cured
+     * @return boolean if the sheep can be cured
      */
     @Override
     public boolean cure(Actor actor, GameMap map) {
-        this.rotEffect.resetTimer(10);
+        List<Exit> exits = map.locationOf(this).getExits();
+        for (Exit exit: exits) {
+            Location location = exit.getDestination();
+            location.setGround(new Inheritree());
+        }
         return true;
     }
 
