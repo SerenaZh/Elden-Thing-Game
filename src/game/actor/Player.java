@@ -77,6 +77,6 @@ public class Player extends Actor {
         return super.toString() + " Stamina (" +
                 this.getAttribute(BaseActorAttributes.STAMINA) + "/" +
                 this.getAttributeMaximum(BaseActorAttributes.STAMINA) +
-                ")";
+                ")" + " Balance (" + this.getBalance() + ")";
     }
 }

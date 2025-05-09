@@ -13,12 +13,14 @@ public class BuyAction extends Action {
     }
     @Override
     public String execute(Actor actor, GameMap map) {
-        buyable.purchase();
-        return "Buy";
+        if (buyable.purchase(actor, map)) {
+            return actor.toString() + " has bought " + buyable.toString();
+        }
+        return actor.toString() + " has insufficient runes " + buyable.toString();
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor.toString() + " buys " + buyable.toString();
+        return actor.toString() + " buys " + buyable.toString() + " with " + buyable.getCost() + " runes";
     }
 }

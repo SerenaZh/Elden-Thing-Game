@@ -71,6 +71,7 @@ public class Application {
         Player player = new Player("Farmer", '@', 100, 200);
         player.addItemToInventory(new Seed(new Inheritree()));
         player.addItemToInventory(new Seed(new Bloodrose()));
+        player.addBalance(10000);
         world.addPlayer(player, gameMap.at(23, 10));
 
         // game setup
@@ -95,7 +96,7 @@ public class Application {
         OmenSheep sheep4 = new OmenSheep();
         gameMap.at(21,8).addActor(sheep4);
 
-        player.addItemToInventory(new Broadsword());
+//        player.addItemToInventory(new Broadsword(150));
 
         world.run();
     }

@@ -5,15 +5,10 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.Weapon;
-import game.Capabilities;
 import game.actions.AttackAction;
 import game.actor.Status;
 import game.behaviours.WanderBehaviour;
-import game.items.weapons.Broadsword;
-import game.items.weapons.WeaponItem;
 
 import java.util.Map;
 import java.util.Random;
@@ -78,13 +73,6 @@ public abstract class NonPlayableActor extends Actor {
         ActionList actions = super.allowableActions(otherActor, direction, map);
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-
-
-//            for (Item item: otherActor.getItemInventory()) {
-//                if (item.hasCapability(Capabilities.WEAPON)) {
-//                    actions.add(new AttackAction(this, direction, item));
-//                }
-//            }
         }
         return actions;
     }
