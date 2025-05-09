@@ -1,20 +1,43 @@
-//package game.items.weapons;
-//
-//import edu.monash.fit2099.engine.actors.Actor;
-//import edu.monash.fit2099.engine.positions.GameMap;
-//import game.Capabilities;
-//import game.items.Buyable;
-//
-//public class Katana extends WeaponItem implements Buyable {
-//
-//    public Katana(){
-//        super("Katana", 'j', 50, "slices", 60);
-//        this.addCapability(Capabilities.WEAPON);
-//    }
-//
-//    @Override
-//    public void purchase(Actor actor, GameMap map) {
-//
-//        System.out.println("WEEEE");
-//    }
-//}
+package game.items.weapons;
+
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
+import game.Capabilities;
+import game.actions.BuyAction;
+import game.actor.Ability;
+import game.items.Buyable;
+
+public class Katana extends WeaponItem implements Buyable {
+    private int cost;
+
+    public Katana(){
+        super("Katana", 'j', 50, "slices", 60);
+        this.addCapability(Capabilities.BUYABLE);
+        this.cost = cost;
+    }
+
+    @Override
+    public boolean purchase(Actor actor, GameMap map) {
+        if (actor.getBalance() < cost) {
+            return false;
+        }
+        actor.deductBalance(cost);
+        actor.addItemToInventory(this);
+        return true;
+    }
+
+    @Override
+    public ActionList allowableActions(Actor owner, GameMap map) {
+        ActionList actionList = super.allowableActions(owner, map);
+        if (owner.hasCapability(Ability.MERCHANT)) {
+            actionList.add(new BuyAction(this));
+        }
+        return actionList;
+    }
+
+    @Override
+    public int getCost() {
+        return cost;
+    }
+}
