@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actor.npc.MerchantKale;
 import game.actor.npc.OmenSheep;
 import game.actor.Player;
 import game.ground.*;
@@ -77,6 +78,9 @@ public class Application {
 
         OmenSheep sheep = new OmenSheep();
         gameMap.at(16,6).addActor(sheep);
+
+        MerchantKale kale = new MerchantKale();
+        gameMap.at(24,10).addActor(kale);
 
 //        SpiritGoat goat2 = new SpiritGoat();
 //        gameMap.at(22,13).addActor(goat2);

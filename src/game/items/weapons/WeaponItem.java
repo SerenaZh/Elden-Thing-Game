@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actions.AttackAction;
+import game.actions.BuyAction;
 
 import java.util.List;
 import java.util.Random;
@@ -73,6 +74,7 @@ public class WeaponItem extends Item implements Weapon {
 //            }
 //        }
         actionList.add(new AttackAction(otherActor, "direction", this));
+
         return actionList;
     }
 }

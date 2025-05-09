@@ -14,11 +14,11 @@ public class BuyAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         buyable.purchase();
-        return "";
+        return "Buy";
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "";
+        return actor.toString() + " buys " + buyable.toString();
     }
 }
