@@ -22,12 +22,12 @@ public class SpawnActorChange implements PurchaseEffect{
         List<Exit> exits = playerLocation.getExits();
 
         // Shuffles a list
-        Collections.shuffle(exits);
+//        Collections.shuffle(exits);
         for (Exit exit: exits) {
             Location location = exit.getDestination();
             if (location.canActorEnter(player)) {
                 location.addActor(entity);
-                System.out.println("A " + entity.toString() + " has spawned!");
+                System.out.println(entity.toString() + " has spawned!");
                 break;
             }
 

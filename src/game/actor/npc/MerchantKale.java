@@ -2,16 +2,23 @@ package game.actor.npc;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Capabilities;
 import game.actor.Ability;
+import game.items.purchaseeffect.MaxAttributeChange;
+import game.items.purchaseeffect.SpawnActorChange;
 import game.items.weapons.Broadsword;
 
 public class MerchantKale extends NonPlayableActor {
     public MerchantKale(){
         super("Merchant Kale", 'k', 200);
-        this.addItemToInventory(new Broadsword(150));
+        Broadsword broadsword = new Broadsword(150);
+        broadsword.addEffect(new MaxAttributeChange(15, BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE));
+        broadsword.addEffect(new SpawnActorChange(new OmenSheep()));
+        this.addItemToInventory(broadsword);
         this.addCapability(Ability.MERCHANT);
     }
 
