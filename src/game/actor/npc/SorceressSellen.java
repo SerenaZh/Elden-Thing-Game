@@ -2,17 +2,43 @@ package game.actor.npc;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Capabilities;
 import game.actor.Ability;
+import game.items.purchaseeffect.AttributeValueChange;
+import game.items.purchaseeffect.MaxAttributeChange;
+import game.items.purchaseeffect.SpawnActorChange;
 import game.items.weapons.Broadsword;
+import game.items.weapons.DragonslayerGreatsword;
+import game.items.weapons.Katana;
 
 public class SorceressSellen extends NonPlayableActor{
     public SorceressSellen(){
         super("Sorceress Sellen",'s', 150);
-        this.addItemToInventory(new Broadsword(100));
         this.addCapability(Ability.MERCHANT);
+        setUpInventory();
+    }
+
+    private void setUpInventory() {
+        Broadsword broadsword = new Broadsword(100);
+        broadsword.addEffect(new MaxAttributeChange(20, BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE));
+
+        DragonslayerGreatsword greatsword = new DragonslayerGreatsword(1500);
+        greatsword.addEffect(new SpawnActorChange(new GoldenBeetle()));
+
+        Katana katana = new Katana(500);
+        katana.addEffect(new AttributeValueChange(10, BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE));
+        katana.addEffect(new MaxAttributeChange(20, BaseActorAttributes.STAMINA, ActorAttributeOperations.INCREASE));
+        SpawnActorChange spawnChange = new SpawnActorChange(new OmenSheep());
+        spawnChange.addSpawnTarget(this);
+        katana.addEffect(spawnChange);
+
+        addItemToInventory(broadsword);
+        addItemToInventory(greatsword);
+        addItemToInventory(katana);
     }
 
     @Override

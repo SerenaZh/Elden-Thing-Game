@@ -11,26 +11,44 @@ import java.util.List;
 
 public class SpawnActorChange implements PurchaseEffect{
     Actor entity;
+    Actor spawnTarget;
 
     public SpawnActorChange(Actor entity) {
         this.entity = entity;
     }
 
+    public void addSpawnTarget(Actor spawnTarget) {
+        this.spawnTarget = spawnTarget;
+    }
+
     @Override
     public void applyEffect(Actor player, GameMap map) {
-        Location playerLocation = map.locationOf(player);
-        List<Exit> exits = playerLocation.getExits();
+        if (spawnTarget == null) {
+            Location playerLocation = map.locationOf(player);
+            List<Exit> exits = playerLocation.getExits();
 
-        // Shuffles a list
-//        Collections.shuffle(exits);
-        for (Exit exit: exits) {
-            Location location = exit.getDestination();
-            if (location.canActorEnter(player)) {
-                location.addActor(entity);
-                System.out.println(entity.toString() + " has spawned!");
-                break;
+            for (Exit exit: exits) {
+                Location location = exit.getDestination();
+                if (location.canActorEnter(player)) {
+                    location.addActor(entity);
+                    System.out.println(entity.toString() + " has spawned!");
+                    break;
+                }
+
             }
+        } else {
+            Location spawnLocation = map.locationOf(spawnTarget);
+            List<Exit> exits = spawnLocation.getExits();
 
+            for (Exit exit : exits) {
+                Location location = exit.getDestination();
+                if (location.canActorEnter(spawnTarget)) {
+                    location.addActor(entity);
+                    System.out.println(entity.toString() + " has spawned!");
+                    break;
+                }
+
+            }
         }
 
     }

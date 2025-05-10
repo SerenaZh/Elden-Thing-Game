@@ -3,6 +3,8 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -10,6 +12,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actor.npc.MerchantKale;
 import game.actor.npc.OmenSheep;
 import game.actor.Player;
+import game.actor.npc.SorceressSellen;
 import game.ground.*;
 import game.items.Seed;
 import game.items.Talisman;
@@ -80,9 +83,13 @@ public class Application {
         OmenSheep sheep = new OmenSheep();
         gameMap.at(16,6).addActor(sheep);
 
+        SorceressSellen sellen = new SorceressSellen();
+        gameMap.at(22, 10).addActor(sellen);
+
         MerchantKale kale = new MerchantKale();
         gameMap.at(24,10).addActor(kale);
-
+        player.hurt(50);
+        player.modifyAttribute(BaseActorAttributes.STAMINA, ActorAttributeOperations.DECREASE, 100);
 //        SpiritGoat goat2 = new SpiritGoat();
 //        gameMap.at(22,13).addActor(goat2);
 //        SpiritGoat goat3 =  new SpiritGoat();
@@ -96,7 +103,6 @@ public class Application {
         OmenSheep sheep4 = new OmenSheep();
         gameMap.at(21,8).addActor(sheep4);
 
-//        player.addItemToInventory(new Broadsword(150));
 
         world.run();
     }

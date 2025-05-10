@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Broadsword extends WeaponItem implements Buyable {
     private int cost;
-    private List<PurchaseEffect> effects = new ArrayList<PurchaseEffect>();
+    private List<PurchaseEffect> effects = new ArrayList<>();
 
     public Broadsword(int cost){
         super("Broadsword", 'b', 30, "slashes", 50);

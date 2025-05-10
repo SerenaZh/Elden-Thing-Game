@@ -7,14 +7,32 @@ import game.Capabilities;
 import game.actions.BuyAction;
 import game.actor.Ability;
 import game.items.Buyable;
+import game.items.purchaseeffect.PurchaseEffect;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Katana extends WeaponItem implements Buyable {
     private int cost;
+    private List<PurchaseEffect> effects = new ArrayList<>();
 
-    public Katana(){
+    public Katana(int cost){
         super("Katana", 'j', 50, "slices", 60);
         this.addCapability(Capabilities.BUYABLE);
         this.cost = cost;
+    }
+
+    public List<PurchaseEffect> getAllEffects() {
+        return Collections.unmodifiableList(effects);
+    }
+
+    public void addEffect(PurchaseEffect effect) {
+        effects.add(effect);
+    }
+
+    public void removeEffect(PurchaseEffect effect) {
+        effects.remove(effect);
     }
 
     @Override
@@ -24,6 +42,10 @@ public class Katana extends WeaponItem implements Buyable {
         }
         actor.deductBalance(cost);
         actor.addItemToInventory(this);
+        actor.hurt(25);
+        for (PurchaseEffect effect: this.getAllEffects()) {
+            effect.applyEffect(actor, map);
+        }
         return true;
     }
 

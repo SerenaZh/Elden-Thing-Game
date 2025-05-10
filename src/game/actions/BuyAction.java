@@ -11,6 +11,7 @@ public class BuyAction extends Action {
     public BuyAction(Buyable buyable){
         this.buyable = buyable;
     }
+
     @Override
     public String execute(Actor actor, GameMap map) {
         if (buyable.purchase(actor, map)) {
