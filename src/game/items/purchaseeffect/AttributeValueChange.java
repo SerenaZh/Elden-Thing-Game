@@ -5,12 +5,12 @@ import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.GameMap;
 
-public class MaxAttributeChange implements PurchaseEffect {
+public class AttributeValueChange implements PurchaseEffect {
     int amount;
     BaseActorAttributes attribute;
     ActorAttributeOperations operation;
 
-    public MaxAttributeChange(int amount, BaseActorAttributes attribute, ActorAttributeOperations operation) {
+    public AttributeValueChange(int amount, BaseActorAttributes attribute, ActorAttributeOperations operation) {
         this.amount = amount;
         this.attribute = attribute;
         this.operation = operation;
@@ -18,6 +18,6 @@ public class MaxAttributeChange implements PurchaseEffect {
 
     @Override
     public void applyEffect(Actor actor, GameMap map) {
-        actor.modifyAttributeMaximum(attribute, operation, amount);
+        actor.modifyAttribute(attribute, operation, amount);
     }
 }
