@@ -10,7 +10,9 @@ import java.util.List;
 
 
 public class SpawnActorChange implements PurchaseEffect{
+    //Here we pass in static entity; refactor such that a NEW instance of entity is spawned each time not the same one.
     Actor entity;
+
     Actor spawnTarget;
 
     public SpawnActorChange(Actor entity) {
