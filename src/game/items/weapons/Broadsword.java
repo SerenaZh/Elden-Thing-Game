@@ -17,6 +17,10 @@ public class Broadsword extends WeaponItem implements Buyable {
         this.cost = cost;
     }
 
+    public void test() {
+
+    }
+
     @Override
     public boolean purchase(Actor actor, GameMap map) {
         if (actor.getBalance() < cost) {

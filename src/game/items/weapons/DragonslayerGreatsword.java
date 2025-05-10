@@ -2,6 +2,8 @@ package game.items.weapons;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Capabilities;
 import game.actions.BuyAction;
@@ -24,6 +26,7 @@ public class DragonslayerGreatsword extends WeaponItem implements Buyable {
         }
         actor.deductBalance(cost);
         actor.addItemToInventory(this);
+        actor.modifyAttributeMaximum(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE, 15);
         return true;
     }
 

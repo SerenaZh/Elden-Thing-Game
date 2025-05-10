@@ -40,7 +40,6 @@ public class AttackAction extends Action {
      */
     public AttackAction(Actor target, String direction, Weapon weapon) {
         this.target = target;
-        System.out.println(direction);
         this.direction = direction;
         this.weapon = weapon;
     }
