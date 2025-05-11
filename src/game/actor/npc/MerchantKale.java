@@ -14,13 +14,23 @@ import game.items.purchaseeffect.SpawnActorChange;
 import game.items.weapons.Broadsword;
 import game.items.weapons.DragonslayerGreatsword;
 
+/**
+ * Class representing the merchant Kale NPC
+ * @authors Serena Zhou and Aryan M
+ */
 public class MerchantKale extends NonPlayableActor {
+    /**
+     * Constructor for Merchent Kale
+     */
     public MerchantKale(){
         super("Merchant Kale", 'k', 200);
         this.addCapability(Ability.MERCHANT);
         setUpInventory();
     }
 
+    /**
+     * Method to create items and their customs, and to add them to the merchant's inventory
+     */
     private void setUpInventory() {
         Broadsword broadsword = new Broadsword(150);
         broadsword.addEffect(new MaxAttributeChange(30, BaseActorAttributes.STAMINA, ActorAttributeOperations.INCREASE));

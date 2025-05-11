@@ -15,6 +15,11 @@ import game.items.weapons.Broadsword;
 import game.items.weapons.DragonslayerGreatsword;
 import game.items.weapons.Katana;
 
+
+/**
+ * Class representing the sorceress Sellen NPC
+ * @authors Serena Zhou and Aryan M
+ */
 public class SorceressSellen extends NonPlayableActor{
     public SorceressSellen(){
         super("Sorceress Sellen",'s', 150);
@@ -22,6 +27,9 @@ public class SorceressSellen extends NonPlayableActor{
         setUpInventory();
     }
 
+    /**
+     * Method to create items and their customs, and to add them to the merchant's inventory
+     */
     private void setUpInventory() {
         Broadsword broadsword = new Broadsword(100);
         broadsword.addEffect(new MaxAttributeChange(20, BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE));
