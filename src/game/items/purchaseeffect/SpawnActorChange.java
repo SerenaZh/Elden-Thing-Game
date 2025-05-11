@@ -25,7 +25,9 @@ public class SpawnActorChange implements PurchaseEffect{
     Actor spawnTarget;
 
     /**
-     * constructor
+     * Constructor
+     *
+     * @param entity Actor being spawned
      */
     public SpawnActorChange(Actor entity) {
         this.entity = entity;

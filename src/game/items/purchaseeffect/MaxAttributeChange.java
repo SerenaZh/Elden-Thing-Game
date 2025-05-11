@@ -25,6 +25,10 @@ public class MaxAttributeChange implements PurchaseEffect {
 
     /**
      * Constructor
+     *
+     * @param amount by which a given attribute is being altered.
+     * @param attribute which is being altered
+     * @param operation used to alter attribute (INCREASE, DECREASE, or UPDATE )
      */
     public MaxAttributeChange(int amount, BaseActorAttributes attribute, ActorAttributeOperations operation) {
         this.amount = amount;
