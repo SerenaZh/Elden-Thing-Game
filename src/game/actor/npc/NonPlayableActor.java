@@ -25,6 +25,7 @@ public abstract class NonPlayableActor extends Actor {
      */
     public Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
+    public static final int wanderRank=999;
     /**
      * The constructor of the NonPlayableActor class.
      *
@@ -34,7 +35,7 @@ public abstract class NonPlayableActor extends Actor {
      */
     public NonPlayableActor(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        this.behaviours.put(999, new WanderBehaviour());
+        this.behaviours.put(wanderRank, new WanderBehaviour());
     }
 
     /**
