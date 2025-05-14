@@ -79,14 +79,6 @@ public class Katana extends WeaponItem implements Buyable {
         return true;
     }
 
-    @Override
-    public ActionList allowableActions(Actor owner, GameMap map) {
-        ActionList actionList = super.allowableActions(owner, map);
-        if (owner.hasCapability(Ability.MERCHANT)) {
-            actionList.add(new BuyAction(this));
-        }
-        return actionList;
-    }
 
     @Override
     public int getCost() {

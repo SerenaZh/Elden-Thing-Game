@@ -13,15 +13,15 @@ public class AttributeValueChange implements PurchaseEffect {
     /**
      * The amount by which a given attribute is being altered.
      */
-    int amount;
+    private int amount;
     /**
      * The attribute which is being altered
      */
-    BaseActorAttributes attribute;
+    private BaseActorAttributes attribute;
     /**
      * The operation used to alter attribute (INCREASE, DECREASE, or UPDATE )
      */
-    ActorAttributeOperations operation;
+    private ActorAttributeOperations operation;
 
     /**
      * Constructor

@@ -7,13 +7,18 @@ import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Capabilities;
+import game.actions.BuyAction;
 import game.actor.Ability;
+import game.items.Buyable;
 import game.items.purchaseeffect.AttributeValueChange;
 import game.items.purchaseeffect.MaxAttributeChange;
 import game.items.purchaseeffect.SpawnActorChange;
 import game.items.weapons.Broadsword;
 import game.items.weapons.DragonslayerGreatsword;
 import game.items.weapons.Katana;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -24,13 +29,14 @@ public class SorceressSellen extends NonPlayableActor{
     public SorceressSellen(){
         super("Sorceress Sellen",'s', 150);
         this.addCapability(Ability.MERCHANT);
-        setUpInventory();
+        getBuyables();
     }
 
     /**
      * Method to create items and their customs, and to add them to the merchant's inventory
      */
-    private void setUpInventory() {
+    private List<Buyable> getBuyables() {
+        List<Buyable> buyableList = new ArrayList<>();
         Broadsword broadsword = new Broadsword(100);
         broadsword.addEffect(new MaxAttributeChange(20, BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE));
 
@@ -44,19 +50,19 @@ public class SorceressSellen extends NonPlayableActor{
         spawnChange.addSpawnTarget(this);
         katana.addEffect(spawnChange);
 
-        addItemToInventory(broadsword);
-        addItemToInventory(greatsword);
-        addItemToInventory(katana);
+        buyableList.add(broadsword);
+        buyableList.add(greatsword);
+        buyableList.add(katana);
+        return  buyableList;
     }
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = super.allowableActions(otherActor, direction, map);
-        for (Item item: this.getItemInventory()) {
-            if (item.hasCapability(Capabilities.BUYABLE)) {
-                actionList.add(item.allowableActions(this, map));
-            }
+        for (Buyable buyable: this.getBuyables()) {
+            actionList.add(new BuyAction(buyable));
         }
+
         return actionList;
     }
 }

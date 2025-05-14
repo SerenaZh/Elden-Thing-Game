@@ -19,7 +19,7 @@ import java.util.List;
  * Omen sheep is a NonPlayableActor
  * @author Serena Zhou
  */
-public class OmenSheep extends NonPlayableActor implements Curable {
+public class OmenSheep extends NonPlayableActor implements Curable, ActorFactory {
     private StatusEffect rotEffect = new RotEffect(15);
 
     /**
@@ -61,5 +61,10 @@ public class OmenSheep extends NonPlayableActor implements Curable {
             actions.add(new CureAction(this));
         }
         return actions;
+    }
+
+    @Override
+    public Actor createNewInstance() {
+        return new OmenSheep();
     }
 }

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actor.npc.ActorFactory;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,18 +19,18 @@ public class SpawnActorChange implements PurchaseEffect{
     /**
      * Actor being spawned
      */
-    Actor entity;
+    private ActorFactory entity;
     /**
      * Actor around which the entity will spawn
      */
-    Actor spawnTarget;
+    private Actor spawnTarget;
 
     /**
      * Constructor
      *
      * @param entity Actor being spawned
      */
-    public SpawnActorChange(Actor entity) {
+    public SpawnActorChange(ActorFactory entity) {
         this.entity = entity;
     }
 
@@ -44,32 +45,30 @@ public class SpawnActorChange implements PurchaseEffect{
     @Override
     public void applyEffect(Actor player, GameMap map) {
         if (spawnTarget == null) {
-            Location playerLocation = map.locationOf(player);
-            List<Exit> exits = playerLocation.getExits();
-
-            for (Exit exit: exits) {
-                Location location = exit.getDestination();
-                if (location.canActorEnter(player)) {
-                    location.addActor(entity);
-                    System.out.println(entity.toString() + " has spawned!");
-                    break;
-                }
-
-            }
+            entitySpawn(player,map);
         } else {
-            Location spawnLocation = map.locationOf(spawnTarget);
-            List<Exit> exits = spawnLocation.getExits();
-
-            for (Exit exit : exits) {
-                Location location = exit.getDestination();
-                if (location.canActorEnter(spawnTarget)) {
-                    location.addActor(entity);
-                    System.out.println(entity.toString() + " has spawned!");
-                    break;
-                }
-
-            }
+            entitySpawn(spawnTarget,map);
         }
 
     }
+
+    /**
+     * Method for spawning a new instance of entity at every surrounding location (if possible)
+     * @param spawnTarget around which an entity should spawn
+     * @param map in which spawn takes place
+     */
+    private void entitySpawn(Actor spawnTarget, GameMap map) {
+        Location spawnLocation = map.locationOf(spawnTarget);
+        List<Exit> exits = spawnLocation.getExits();
+
+        for (Exit exit : exits) {
+            Location location = exit.getDestination();
+            if (location.canActorEnter(spawnTarget)) {
+                location.addActor(entity.createNewInstance());
+                System.out.println(entity.toString() + " has spawned!");
+                break;
+            }
+        }
+    }
+
 }

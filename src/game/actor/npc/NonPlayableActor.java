@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.AttackAction;
@@ -34,6 +35,15 @@ public abstract class NonPlayableActor extends Actor {
     public NonPlayableActor(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(999, new WanderBehaviour());
+    }
+
+    /**
+     * Method for returning name of NPC
+     *
+     * @return String name of NPC
+     */
+    public String getName() {
+        return this.name;
     }
 
     /**
