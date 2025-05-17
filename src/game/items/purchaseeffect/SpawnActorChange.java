@@ -11,11 +11,9 @@ import java.util.List;
 
 /**
  * Class representing a PurchaseEffect which spawns an actor
- * @author Serena Zhou
+ * @authors Serena Zhou & Aryan M
  */
 public class SpawnActorChange implements PurchaseEffect{
-    //Here we pass in static entity; refactor such that a NEW instance of entity is spawned each time not the same one.
-
     /**
      * Actor being spawned
      */
@@ -42,12 +40,17 @@ public class SpawnActorChange implements PurchaseEffect{
         this.spawnTarget = spawnTarget;
     }
 
+    /**
+     * Applies the effects by spawning an actor onto the map
+     * @param player affected
+     * @param map in which effect takes place
+     */
     @Override
     public void applyEffect(Actor player, GameMap map) {
         if (spawnTarget == null) {
-            entitySpawn(player,map);
+            entitySpawn(player, map);
         } else {
-            entitySpawn(spawnTarget,map);
+            entitySpawn(spawnTarget, map);
         }
 
     }

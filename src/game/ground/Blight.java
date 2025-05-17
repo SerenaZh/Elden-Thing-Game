@@ -17,8 +17,9 @@ import game.actions.CureAction;
  * modified by Serena Zhou
  */
 public class Blight extends Ground implements Curable {
-
-
+    /**
+     * Constructor for the Blight
+     */
     public Blight() {
         super('x', "Blight");
         this.addCapability(Capabilities.CURSED);

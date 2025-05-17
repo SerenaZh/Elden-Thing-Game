@@ -65,6 +65,12 @@ public class Katana extends WeaponItem implements Buyable {
         effects.remove(effect);
     }
 
+    /**
+     * Method for executing what happens after the actor has purchased
+     * @param actor who is purchasing a Buyable
+     * @param map in which purchase is taking place
+     * @return boolean whether the transaction was successful or not
+     */
     @Override
     public boolean purchase(Actor actor, GameMap map) {
         if (actor.getBalance() < cost) {
@@ -79,7 +85,10 @@ public class Katana extends WeaponItem implements Buyable {
         return true;
     }
 
-
+    /**
+     * Getter for how much the weapon costs
+     * @return int the cost of the weapon
+     */
     @Override
     public int getCost() {
         return cost;

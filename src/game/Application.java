@@ -25,7 +25,7 @@ import game.items.weapons.Broadsword;
  *    Where the main application is initalised to run
  * </p>
  * @author Adrian Kristanto
- * @version 1.0
+ * @version 2.0
  * @since 07/04/2025
  * Modified by Serena Zhou
  */

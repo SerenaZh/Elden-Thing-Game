@@ -20,12 +20,14 @@ import game.items.weapons.Katana;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Class representing the sorceress Sellen NPC
  * @authors Serena Zhou and Aryan M
  */
-public class SorceressSellen extends NonPlayableActor{
+public class SorceressSellen extends NonPlayableActor {
+    /**
+     * Constructor for SorceressSellen
+     */
     public SorceressSellen(){
         super("Sorceress Sellen",'s', 150);
         this.addCapability(Ability.MERCHANT);
@@ -34,6 +36,7 @@ public class SorceressSellen extends NonPlayableActor{
 
     /**
      * Method to create items and their customs, and to add them to the merchant's inventory
+     * @return List of Buyable objects, objects that can be bought
      */
     private List<Buyable> getBuyables() {
         List<Buyable> buyableList = new ArrayList<>();
@@ -56,6 +59,13 @@ public class SorceressSellen extends NonPlayableActor{
         return  buyableList;
     }
 
+    /**
+     * Allowable actions that another Actor can do to this Actor
+     * @param otherActor the Actor that might be performing the action
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return ActionList a list of actions that can be done
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = super.allowableActions(otherActor, direction, map);

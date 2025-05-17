@@ -15,6 +15,11 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 
+/**
+ * A NPC class for any NPCs that are in the game, who cannot be played by the user
+ *
+ * @authors Serena Zhou & Aryan M
+ */
 public abstract class NonPlayableActor extends Actor {
     /**
      * For any probabilities in this class
@@ -24,8 +29,11 @@ public abstract class NonPlayableActor extends Actor {
      * The map of behaviours that the NonPlayableActor's may have
      */
     public Map<Integer, Behaviour> behaviours = new TreeMap<>();
-
+    /**
+     * Constant for the rank for WanderBehaviour
+     */
     public static final int wanderRank=999;
+
     /**
      * The constructor of the NonPlayableActor class.
      *

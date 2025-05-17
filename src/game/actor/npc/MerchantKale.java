@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class MerchantKale extends NonPlayableActor {
     /**
-     * Constructor for Merchent Kale
+     * Constructor for Merchant Kale
      */
     public MerchantKale(){
         super("Merchant Kale", 'k', 200);
@@ -51,6 +51,13 @@ public class MerchantKale extends NonPlayableActor {
         return buyableList;
     }
 
+    /**
+     * Allowable actions that another Actor can do to this Actor
+     * @param otherActor the Actor that might be performing the action
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return ActionList a list of actions that can be done
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actionList = super.allowableActions(otherActor, direction, map);

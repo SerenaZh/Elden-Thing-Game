@@ -36,6 +36,11 @@ public class MaxAttributeChange implements PurchaseEffect {
         this.operation = operation;
     }
 
+    /**
+     * Applies the effect onto the Actor (Player)
+     * @param actor affected
+     * @param map in which effect takes place
+     */
     @Override
     public void applyEffect(Actor actor, GameMap map) {
         actor.modifyAttributeMaximum(attribute, operation, amount);

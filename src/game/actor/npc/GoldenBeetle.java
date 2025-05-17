@@ -14,6 +14,10 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
         super("Golden Beetle", 'b', 25);
     }
 
+    /**
+     * Creates a new instance of this class
+     * @return Actor a new instance
+     */
     @Override
     public Actor createNewInstance() {
         return new GoldenBeetle();
