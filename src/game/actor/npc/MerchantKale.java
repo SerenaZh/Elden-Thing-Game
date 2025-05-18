@@ -5,10 +5,14 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.actions.BuyAction;
+import game.actions.ListenAction;
 import game.actor.Ability;
+import game.behaviours.MonologueCapable;
 import game.items.Buyable;
 import game.items.purchaseeffect.AttributeValueChange;
 import game.items.purchaseeffect.MaxAttributeChange;
@@ -21,15 +25,14 @@ import java.util.List;
 
 /**
  * Class representing the merchant Kale NPC
- * @authors Serena Zhou and Aryan M
+ * @authors Serena Zhou and Aryan M and Mohammed A
  */
-public class MerchantKale extends NonPlayableActor {
+public class MerchantKale extends NonPlayableActor implements MonologueCapable {
     /**
      * Constructor for Merchant Kale
      */
     public MerchantKale(){
         super("Merchant Kale", 'k', 200);
-        this.addCapability(Ability.MERCHANT);
         getBuyables();
     }
 
@@ -51,6 +54,33 @@ public class MerchantKale extends NonPlayableActor {
         return buyableList;
     }
 
+    @Override
+    public List<String> generateMonologuePool(Actor listener, GameMap map) {
+        List<String> pool = new ArrayList<>();
+
+        boolean hasLowRunes = listener.getBalance() < 500;
+        boolean hasEmptyInventory = listener.getItemInventory().isEmpty();
+        boolean nearCursed = isNearCapability(map.locationOf(this), Capabilities.CURSED);
+
+        if (hasLowRunes) {
+            pool.add("Ah, hard times, I see. Keep your head low and your blade sharp.");
+        }
+
+        if (hasEmptyInventory) {
+            pool.add("Not a scrap to your name? Even a farmer should carry a trinket or two.");
+        }
+
+        if (nearCursed) {
+            pool.add("Rest by the flame when you can, friend. These lands will wear you thin.");
+        }
+
+        if (pool.isEmpty()) {
+            pool.add("A merchant’s life is a lonely one. But the roads… they whisper secrets to those who listen.");
+        }
+
+        return pool;
+    }
+
     /**
      * Allowable actions that another Actor can do to this Actor
      * @param otherActor the Actor that might be performing the action
@@ -64,6 +94,16 @@ public class MerchantKale extends NonPlayableActor {
         for (Buyable buyable: getBuyables()) {
             actionList.add(new BuyAction(buyable));
         }
+        actionList.add(new ListenAction(this));
         return actionList;
+    }
+
+    private boolean isNearCapability(Location location, Capabilities capability) {
+        for (Exit exit : location.getExits()) {
+            if (exit.getDestination().getGround().hasCapability(capability)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
