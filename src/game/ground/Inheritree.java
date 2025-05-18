@@ -23,6 +23,7 @@ public class Inheritree extends Ground implements Planting {
      */
     public Inheritree(){
         super('t', "Inheritree");
+        this.addCapability(Capabilities.BLESSED_BY_GRACE);
     }
 
     /**

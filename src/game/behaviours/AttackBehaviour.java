@@ -21,7 +21,7 @@ public class AttackBehaviour implements Behaviour {
      * Returns an attack action they can do if requirements are met
      * @param actor the Actor acting
      * @param map the GameMap containing the Actor
-     * @return
+     * @return Action that may happen or null
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {

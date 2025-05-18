@@ -8,15 +8,18 @@ import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttribute;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.BareFist;
 import game.FancyMessage;
+import game.actions.UseEggAction;
+import game.items.Egg;
 
 /**
  * Class representing the Player.
  * @author Adrian Kristanto
- * modified by Serena Zhou
+ * modified by Serena Zhou & Khushi R
  */
 public class Player extends Actor {
     /**
@@ -61,6 +64,13 @@ public class Player extends Actor {
         // Handle multi-turn Actions
         if (lastAction.getNextAction() != null)
             return lastAction.getNextAction();
+
+        // Add actions to consume Eggs from inventory
+        for (Item item : this.getItemInventory()) {
+            if (item instanceof Egg) {
+                actions.add(new UseEggAction((Egg) item));
+            }
+        }
 
         // return/print the console menu
         Menu menu = new Menu(actions);

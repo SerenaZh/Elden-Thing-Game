@@ -10,6 +10,7 @@ import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
+import game.behaviours.LayEggBehaviourForSheep;
 import game.ground.Inheritree;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class OmenSheep extends NonPlayableActor implements Curable, ActorFactory
         super("Omen Sheep", 'm', 75 );
         this.addStatusEffect(rotEffect);
         this.addCapability(Capabilities.CURABLE);
+        this.behaviours.put(7, new LayEggBehaviourForSheep());
     }
 
     /**
