@@ -14,6 +14,9 @@ import game.actor.RotEffect;
  * @author Serena Zhou
  */
 public class SpiritGoat extends NonPlayableActor implements Curable {
+    /**
+     * Rot that effects the actor
+     */
     private RotEffect rotEffect = new RotEffect(10);
 
     /**

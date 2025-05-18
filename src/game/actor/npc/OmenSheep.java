@@ -20,6 +20,9 @@ import java.util.List;
  * @author Serena Zhou
  */
 public class OmenSheep extends NonPlayableActor implements Curable, ActorFactory {
+    /**
+     * Rot that effects the Actor
+     */
     private StatusEffect rotEffect = new RotEffect(15);
 
     /**
@@ -63,6 +66,10 @@ public class OmenSheep extends NonPlayableActor implements Curable, ActorFactory
         return actions;
     }
 
+    /**
+     * Create a new instance of the current class
+     * @return Actor of the current class
+     */
     @Override
     public Actor createNewInstance() {
         return new OmenSheep();

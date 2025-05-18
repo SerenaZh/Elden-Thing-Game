@@ -4,19 +4,16 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.actions.BuyAction;
 import game.actions.ListenAction;
-import game.actor.Ability;
 import game.behaviours.MonologueCapable;
 import game.items.Buyable;
 import game.items.purchaseeffect.AttributeValueChange;
 import game.items.purchaseeffect.MaxAttributeChange;
-import game.items.purchaseeffect.SpawnActorChange;
 import game.items.weapons.Broadsword;
 import game.items.weapons.DragonslayerGreatsword;
 
@@ -54,6 +51,12 @@ public class MerchantKale extends NonPlayableActor implements MonologueCapable {
         return buyableList;
     }
 
+    /**
+     * Generates the monologue for this actor
+     * @param listener The actor that is listening (typically the player).
+     * @param map The current game map.
+     * @return List of Strings of monologue options
+     */
     @Override
     public List<String> generateMonologuePool(Actor listener, GameMap map) {
         List<String> pool = new ArrayList<>();
@@ -98,6 +101,12 @@ public class MerchantKale extends NonPlayableActor implements MonologueCapable {
         return actionList;
     }
 
+    /**
+     * Checks if actor is near location that has a specific capability
+     * @param location
+     * @param capability
+     * @return
+     */
     private boolean isNearCapability(Location location, Capabilities capability) {
         for (Exit exit : location.getExits()) {
             if (exit.getDestination().getGround().hasCapability(capability)) {

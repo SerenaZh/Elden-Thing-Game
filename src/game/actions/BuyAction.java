@@ -39,6 +39,11 @@ public class BuyAction extends Action {
         return actor.toString() + " has insufficient runes " + buyable.toString();
     }
 
+    /**
+     * Shows the text option to be displayed on the terminal
+     * @param actor The actor performing the action.
+     * @return String to be printed
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor.toString() + " buys " + buyable.toString() + " with " + buyable.getCost() + " runes";

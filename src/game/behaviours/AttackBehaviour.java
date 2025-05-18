@@ -17,7 +17,12 @@ import java.util.List;
  * @author Mohammed A
  */
 public class AttackBehaviour implements Behaviour {
-
+    /**
+     * Returns an attack action they can do if requirements are met
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         Location here = map.locationOf(actor);
