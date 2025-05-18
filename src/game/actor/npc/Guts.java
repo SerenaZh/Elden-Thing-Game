@@ -16,6 +16,8 @@ import java.util.Random;
 
 /**
  * Guts is a berserk NPC who attacks all conscious actors with HP > 50.
+ *
+ * @author Mohammed A
  */
 public class Guts extends NonPlayableActor implements MonologueCapable {
 

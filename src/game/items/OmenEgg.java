@@ -14,7 +14,7 @@ import game.actor.npc.ActorFactory;
  * 3 turns on the ground without being picked up.
  * If consumed from inventory, it increases the actor's maximum health by 10 points.
  *
- * @author Khushi R
+ * @author Khushi R & Sandeesa R
  */
 public class OmenEgg extends Egg {
 

@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 /**
  * Interface to describe things that can be cured of
  * something
+ *
+ * @author Serena Zhou
  */
 public interface Curable {
     /**
