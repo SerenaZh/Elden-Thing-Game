@@ -1,51 +1,39 @@
-package game.actor;
+package game.actor.npc;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.StatusEffect;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
-import game.ground.Inheritree;
-
-import java.util.List;
+import game.actor.RotEffect;
 
 /**
- * Class representing the Omen Sheep that roams the land
- * Omen sheep is a NonPlayableActor
+ * Class representing the Spirit Goat that roams the land
+ * Spirit Goat is a NonPlayableActor
  * @author Serena Zhou
  */
-public class OmenSheep extends NonPlayableActor implements Curable {
-    private StatusEffect rotEffect = new RotEffect(15);
+public class SpiritGoat extends NonPlayableActor implements Curable {
+    private RotEffect rotEffect = new RotEffect(10);
 
     /**
-     * Constructor for Omen Sheep
+     * Constructor for the Spirit Goat
      */
-    public OmenSheep() {
-        super("Omen Sheep", 'm', 75 );
+    public SpiritGoat() {
+        super("Spirit Goat", 'y', 50 );
         this.addStatusEffect(rotEffect);
         this.addCapability(Capabilities.CURABLE);
     }
 
     /**
-     * Cures the Omen Sheep
-     * @param actor that is curing the Sheep
+     * Cures the Spirit Goat
+     * @param actor that is curing the goat
      * @param map of the Game
-     * @return boolean if the sheep can be cured
+     * @return boolean if the goat can be cured
      */
     @Override
     public boolean cure(Actor actor, GameMap map) {
-        List<Exit> exits = map.locationOf(this).getExits();
-        for (Exit exit: exits) {
-            Location location = exit.getDestination();
-            location.setGround(new Inheritree());
-        }
+        this.rotEffect.resetTimer(10);
         return true;
     }
 

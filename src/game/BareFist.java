@@ -10,6 +10,9 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
  * Modified by Serena Zhou
  */
 public class BareFist extends IntrinsicWeapon {
+    /**
+     * Constructor for BareFist
+     */
     public BareFist() {
         super(25, "punches", 50);
     }

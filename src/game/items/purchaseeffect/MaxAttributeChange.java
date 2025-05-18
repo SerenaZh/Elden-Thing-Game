@@ -1,0 +1,48 @@
+package game.items.purchaseeffect;
+
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
+import edu.monash.fit2099.engine.positions.GameMap;
+
+/**
+ * Class representing a PurchaseEffect which changes the maximum value of an actor's attributes(s)
+ * @author Serena Zhou and Aryan M
+ */
+public class MaxAttributeChange implements PurchaseEffect {
+    /**
+     * The amount by which a given attribute is being altered.
+     */
+    private int amount;
+    /**
+     * The attribute which is being altered
+     */
+    private BaseActorAttributes attribute;
+    /**
+     * The operation used to alter attribute (INCREASE, DECREASE, or UPDATE )
+     */
+    private ActorAttributeOperations operation;
+
+    /**
+     * Constructor
+     *
+     * @param amount by which a given attribute is being altered.
+     * @param attribute which is being altered
+     * @param operation used to alter attribute (INCREASE, DECREASE, or UPDATE )
+     */
+    public MaxAttributeChange(int amount, BaseActorAttributes attribute, ActorAttributeOperations operation) {
+        this.amount = amount;
+        this.attribute = attribute;
+        this.operation = operation;
+    }
+
+    /**
+     * Applies the effect onto the Actor (Player)
+     * @param actor affected
+     * @param map in which effect takes place
+     */
+    @Override
+    public void applyEffect(Actor actor, GameMap map) {
+        actor.modifyAttributeMaximum(attribute, operation, amount);
+    }
+}

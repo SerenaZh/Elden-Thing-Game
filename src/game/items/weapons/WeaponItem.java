@@ -1,10 +1,16 @@
-package game.items;
+package game.items.weapons;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.*;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.AttackAction;
+import game.actions.BuyAction;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -36,6 +42,13 @@ public class WeaponItem extends Item implements Weapon {
         this.damageMultiplier = DEFAULT_DAMAGE_MULTIPLIER;
     }
 
+    /**
+     * Executes the logic for a WeaponItem to be used in an attack
+     * @param attacker the actor who performed the attack
+     * @param target   the actor who is the target of the attack
+     * @param map      the map on which the attack was executed
+     * @return String of if the player has missed or hit opponent
+     */
     @Override
     public String attack(Actor attacker, Actor target, GameMap map) {
         Random rand = new Random();
@@ -46,5 +59,19 @@ public class WeaponItem extends Item implements Weapon {
         target.hurt(Math.round(damage * damageMultiplier));
 
         return String.format("%s %s %s for %d damage", attacker, verb, target, damage);
+    }
+
+    /**
+     * List of allowable actions a WeaponItem can do to another Actor when it is being
+     * carried by an Actor
+     * @param otherActor the other actor
+     * @param location the location of the other actor
+     * @return ActionList a list of actions
+     */
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location) {
+        ActionList actionList = super.allowableActions(otherActor, location);
+        actionList.add(new AttackAction(otherActor, "direction", this));
+        return actionList;
     }
 }

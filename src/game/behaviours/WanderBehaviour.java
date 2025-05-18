@@ -17,7 +17,9 @@ import java.util.Random;
  *
  */
 public class WanderBehaviour implements Behaviour {
-
+    /**
+     * Adds probability
+     */
     private final Random random = new Random();
 
     /**

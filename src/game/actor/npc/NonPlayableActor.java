@@ -1,18 +1,25 @@
-package game.actor;
+package game.actor.npc;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.AttackAction;
+import game.actor.Status;
 import game.behaviours.WanderBehaviour;
 
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 
+/**
+ * A NPC class for any NPCs that are in the game, who cannot be played by the user
+ *
+ * @authors Serena Zhou & Aryan M
+ */
 public abstract class NonPlayableActor extends Actor {
     /**
      * For any probabilities in this class
@@ -22,6 +29,10 @@ public abstract class NonPlayableActor extends Actor {
      * The map of behaviours that the NonPlayableActor's may have
      */
     public Map<Integer, Behaviour> behaviours = new TreeMap<>();
+    /**
+     * Constant for the rank for WanderBehaviour
+     */
+    public static final int wanderRank=999;
 
     /**
      * The constructor of the NonPlayableActor class.
@@ -32,7 +43,16 @@ public abstract class NonPlayableActor extends Actor {
      */
     public NonPlayableActor(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        this.behaviours.put(999, new WanderBehaviour());
+        this.behaviours.put(wanderRank, new WanderBehaviour());
+    }
+
+    /**
+     * Method for returning name of NPC
+     *
+     * @return String name of NPC
+     */
+    public String getName() {
+        return this.name;
     }
 
     /**

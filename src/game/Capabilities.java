@@ -7,5 +7,7 @@ package game;
 public enum Capabilities {
     CURSED,
     PLANTABLE,
-    CURABLE
+    CURABLE,
+    BUYABLE
+
 }
