@@ -10,3 +10,62 @@
 .JMMmmmmMMM .JMMmmmmMMM .JMMmmmdP' .JMMmmmmMMM .JML.    YM         .JMML.    .JMML.  .JMML..JMML..JML.    YM   `"bmmmdPY  
 ```
 Contributions log: https://docs.google.com/spreadsheets/d/1qlEmjwCmgAbjDdFvwbJjhd0uasW1hyAIcpXi7bx7z2s/edit?usp=sharing
+
+Creative REQ 3
+
+New Farming System
+Inspiration: Realistic farming system. For instance, plants need to be watered, grounds can be shovelled, etc.
+
+New plants!
+- Daisy (New low level class)
+- Lilac (New low level class)
+
+Shovelling system:
+In order to plant a seed, you need to first shovel the plantable soil
+Shovelling may be done with a shovel
+After digging you may plant a seed, which will turn into the plant
+
+Implementation:
+In order to implement this I will create a ShovelAction that will turn plantable soil into a hole. ← The ground Hole 
+will be assigned capability TILLED (that it can accept seeds)
+
+The ShovelAction will take a plantable ground as an attribute and then change that to a Hole later.
+This allows us to adhere to SOLID principles
+Single responsibility, the class only handles the act of Shovelling plantable ground
+Interface Segregation, using Plantable as the only thing that can dig holes on
+
+Alternatively you would need to use an instance of which breaks the Open/Closed principle as well as the Liskov 
+Substitution principle.
+
+Watering System:
+Some plants will need to be watered every few turns, if not watered they will die
+Watering can be done with a watering can that the farmer can use
+
+Implementation:
+In order to implement this, I will create a WaterAction that will reset a Thirsty plant (A plant that needs to be 
+watered every X turns). Thirsty interface will have a method to reset the timer of the plant. If the timer ever 
+reaches 0, the plant dies.
+
+The WaterAction will add a Thirsty plant as its attribute and watering it will give the farmer 100 runes as well as 
+resetting the timer of the plant.
+This allows us to adhere to SOLID principles
+Single responsibility, the class only handles the act of Watering Thirsty things
+Interface Segregation, using Thirsty as the only thing that can be watered
+
+Alternatively you would need to use an instance of which breaks the Open/Closed principle as well as the Liskov 
+Substitution principle.
+
+Pest System:
+Caterpillars roam the world (New low level class)
+When they encounter a plant that they can eat, they will eat it!
+If a caterpillar manages to eat a plant, they will turn into a Aeonian Butterfly that can attack the Farmer
+
+Implementation:
+Caterpillar will be an NPA that can go around the world. The caterpillar has a ConsumeBehaviour. 
+There will be a ConsumeAction/EatAction (OR maybe just a TransformAction, also Transform action will take an Interface 
+Transformable or something) where once the caterpillar eats a Consumable plant, then the caterpillar will turn into the 
+Butterfly. The action will take in the caterpillar, the plant and then get rid of them afterwards and leave in their 
+place the Butterfly.
+
+Alternatively you would need to use an instance of which breaks the Open/Closed principle as well as the Liskov 
+Substitution principle.
