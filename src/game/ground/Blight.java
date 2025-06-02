@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
+import game.actions.ShovelAction;
 
 /**
  * A class representing a blight covering the ground of the valley.
@@ -56,7 +57,13 @@ public class Blight extends Ground implements Curable {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
         if (actor.hasCapability(Capabilities.CURABLE)) {
-            actions.add(new CureAction(this));
+            if (location.containsAnActor()) {
+                if (location.getActor() == actor) {
+                    actions.add(new CureAction(this));
+//                    actions.add(new ShovelAction());
+                }
+            }
+//            actions.add(new CureAction(this));
         }
         return actions;
     }

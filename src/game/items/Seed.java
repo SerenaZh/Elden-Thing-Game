@@ -35,7 +35,7 @@ public class Seed extends Item {
     @Override
     public ActionList allowableActions(Location location) {
         ActionList actions = new ActionList();
-        if (location.getGround().hasCapability(Capabilities.PLANTABLE)) {
+        if (location.getGround().hasCapability(Capabilities.TILLED)) {
             actions.add(new PlantAction(this, plant));
         }
 

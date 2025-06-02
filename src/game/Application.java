@@ -71,6 +71,7 @@ public class Application {
         Player player = new Player("Farmer", '@', 100, 200);
         player.addItemToInventory(new Seed(new Inheritree()));
         player.addItemToInventory(new Seed(new Bloodrose()));
+        player.addItemToInventory(new Talisman());
 
         player.addBalance(10000);
         world.addPlayer(player, gameMap.at(23, 13));
@@ -78,26 +79,28 @@ public class Application {
         // game setup
         gameMap.at(24, 11).addItem(new Talisman());
 
-        OmenSheep sheep = new OmenSheep();
-        gameMap.at(16,6).addActor(sheep);
 
-        SorceressSellen sellen = new SorceressSellen();
-        gameMap.at(22, 10).addActor(sellen);
 
-        MerchantKale kale = new MerchantKale();
-        gameMap.at(24,10).addActor(kale);
-
-        SpiritGoat goat3 =  new SpiritGoat();
-        gameMap.at(24,13).addActor(goat3);
-
-        OmenSheep sheep2 = new OmenSheep();
-        gameMap.at(22,13).addActor(sheep2);
-
-        OmenSheep sheep4 = new OmenSheep();
-        gameMap.at(21,8).addActor(sheep4);
-
-        GoldenBeetle beetle = new GoldenBeetle();
-        gameMap.at(23,14).addActor(beetle);
+//        OmenSheep sheep = new OmenSheep();
+//        gameMap.at(16,6).addActor(sheep);
+//
+//        SorceressSellen sellen = new SorceressSellen();
+//        gameMap.at(22, 10).addActor(sellen);
+//
+//        MerchantKale kale = new MerchantKale();
+//        gameMap.at(24,10).addActor(kale);
+//
+//        SpiritGoat goat3 =  new SpiritGoat();
+//        gameMap.at(24,13).addActor(goat3);
+//
+//        OmenSheep sheep2 = new OmenSheep();
+//        gameMap.at(22,13).addActor(sheep2);
+//
+//        OmenSheep sheep4 = new OmenSheep();
+//        gameMap.at(21,8).addActor(sheep4);
+//
+//        GoldenBeetle beetle = new GoldenBeetle();
+//        gameMap.at(23,14).addActor(beetle);
 
 
         world.run();

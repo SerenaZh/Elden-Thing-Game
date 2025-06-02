@@ -11,5 +11,4 @@ public class Shovel extends Item {
         super("Shovel", 'S',true);
         this.addCapability(Capabilities.SHOVELABLE);
     }
-
 }
