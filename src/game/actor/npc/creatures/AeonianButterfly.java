@@ -1,11 +1,11 @@
-package game.actor.npc;
+package game.actor.npc.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.RazorWings;
-import game.actions.AttackAction;
 import game.actor.Status;
+import game.actor.npc.NonPlayableActor;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 

@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actor.npc.GoldenBeetle;
+import game.actor.npc.creatures.GoldenBeetle;
 
 /**
  * An action that allows an actor (e.g., the player) to consume another actor (such as the Golden Beetle).

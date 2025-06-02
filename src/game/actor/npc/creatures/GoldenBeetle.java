@@ -1,10 +1,12 @@
-package game.actor.npc;
+package game.actor.npc.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 import game.actor.Status;
+import game.actor.npc.ActorFactory;
+import game.actor.npc.NonPlayableActor;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.LayEggBehaviour;
 import game.items.egg.GoldenEgg;

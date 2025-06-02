@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
-import game.actions.ShovelAction;
+import game.actions.farming.ShovelAction;
 
 /**
  * A class representing the soil in the valley

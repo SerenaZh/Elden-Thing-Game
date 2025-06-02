@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
-import game.actions.WaterAction;
+import game.actions.farming.WaterAction;
 import game.ground.Plant;
 import game.ground.Soil;
 

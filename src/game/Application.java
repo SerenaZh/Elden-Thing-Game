@@ -7,8 +7,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actor.npc.*;
 import game.actor.Player;
+import game.actor.npc.creatures.Caterpillar;
 import game.ground.*;
 import game.ground.plants.Bloodrose;
 import game.ground.plants.Daisy;
@@ -16,7 +16,6 @@ import game.ground.plants.Inheritree;
 import game.ground.plants.Lilac;
 import game.items.Seed;
 import game.items.Shovel;
-import game.items.Talisman;
 import game.items.WateringCan;
 
 /**
