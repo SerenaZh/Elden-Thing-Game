@@ -14,8 +14,8 @@ public class TransformAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        transformable.transform(map);
-        return actor.toString() + " has transformed into ";
+        Actor transformed = transformable.transform(map);
+        return actor.toString() + " has transformed into " + transformed.toString();
     }
 
     @Override

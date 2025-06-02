@@ -86,6 +86,11 @@ public class Application {
         gameMap.at(24, 11).addItem(new Shovel());
         gameMap.at(24, 10).addItem(new WateringCan());
 
+        gameMap.at(24, 13).addActor(new Caterpillar());
+        gameMap.at(24, 14).setGround(new Daisy());
+        gameMap.at(23, 14).setGround(new Lilac());
+        gameMap.at(25, 13).setGround(new Daisy());
+        gameMap.at(25, 14).setGround(new Lilac());
 
 
 //        OmenSheep sheep = new OmenSheep();

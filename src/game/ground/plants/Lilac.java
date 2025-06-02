@@ -12,11 +12,12 @@ import game.ground.Soil;
 
 public class Lilac extends Ground implements Plant, Thirsty {
     private int waterLevel = 10;
-    private int originalWaterLevel;
+    private final int originalWaterLevel;
 
     public Lilac() {
         super('l', "Lilac");
         this.originalWaterLevel = waterLevel;
+        this.addCapability(Capabilities.CONSUMABLE);
     }
 
     @Override
