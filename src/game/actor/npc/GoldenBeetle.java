@@ -20,7 +20,6 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
     public GoldenBeetle() {
         super("Golden Beetle", 'b', 25);
         this.behaviours.put(1, new LayEggBehaviour(new GoldenEgg(this)));
-        this.behaviours.put(999, new FollowBehaviour());
     }
 
     /**
@@ -46,6 +45,7 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
         ActionList actions = super.allowableActions(otherActor, direction, map);
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new ConsumeAction(this, "+15 HP, +1000 Runes"));
+            this.behaviours.put(999, new FollowBehaviour(otherActor));
         }
         return actions;
     }

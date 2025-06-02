@@ -32,13 +32,11 @@ public class AttackBehaviour implements Behaviour {
             Location destination = exit.getDestination();
             if (destination.containsAnActor()) {
                 Actor target = destination.getActor();
-                Integer hp = target.getAttribute(BaseActorAttributes.HEALTH);
-                if (hp != null && hp > 50 && target != actor) {
-                    return new AttackAction(target, exit.getName());
-                }
+                return new AttackAction(target, exit.getName());
             }
         }
 
         return null;
     }
 }
+
