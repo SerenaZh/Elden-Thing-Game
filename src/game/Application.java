@@ -3,8 +3,6 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -12,9 +10,10 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actor.npc.*;
 import game.actor.Player;
 import game.ground.*;
+import game.ground.plants.Bloodrose;
+import game.ground.plants.Inheritree;
 import game.items.Seed;
 import game.items.Talisman;
-import game.items.weapons.Broadsword;
 
 /**
  * <h1>Application</h1>

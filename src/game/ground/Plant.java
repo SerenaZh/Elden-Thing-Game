@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
  * Interface for things that can be planted
  * @author Serena Zhou
  */
-public interface Planting {
+public interface Plant {
     /**
      * Plants the plant into the ground
      * @param actor doing the planting

@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.ground.Planting;
+import game.ground.Plant;
 
 /**
  * Class representing the action to plant seeds
@@ -16,7 +16,7 @@ public class PlantAction extends Action {
     /**
      * The plant to be planted
      */
-    private Planting plant;
+    private Plant plant;
     /**
      * The seed Item that has dropped on the ground
      * to be planted
@@ -28,7 +28,7 @@ public class PlantAction extends Action {
      * @param seed to be planted
      * @param plant the plant to be grown into
      */
-    public PlantAction(Item seed, Planting plant) {
+    public PlantAction(Item seed, Plant plant) {
         this.plant = plant;
         this.seed = seed;
     }

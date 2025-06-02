@@ -1,0 +1,15 @@
+package game.ground.plants;
+
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Ground;
+import game.ground.Plant;
+
+public class Daisy extends Ground implements Plant {
+    public Daisy() {super('d', "Daisy");}
+
+    @Override
+    public boolean applyPlant(Actor actor, GameMap map) {
+        return false;
+    }
+}
