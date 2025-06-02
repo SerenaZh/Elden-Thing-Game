@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.Egg;
+import game.items.egg.Egg;
 
 /**
  * An action that allows an actor to consume an {@link Egg} from their inventory.

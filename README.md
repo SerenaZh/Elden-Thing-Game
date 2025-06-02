@@ -83,6 +83,6 @@ Affection level system.
 - merchant faction
 - enemy faction
 - animal faction
-Your standing with a faction can affect prices or behaviour. 
+  Your standing with a faction can affect prices or behaviour.
 - for example if your standing with the merchant faction is below 5, you get 50% surcharge for items
 - if your standing with friendly animals is less than 5, they will avoid you (move away when you move close)

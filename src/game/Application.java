@@ -3,8 +3,6 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -12,9 +10,14 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actor.npc.*;
 import game.actor.Player;
 import game.ground.*;
+import game.ground.plants.Bloodrose;
+import game.ground.plants.Daisy;
+import game.ground.plants.Inheritree;
+import game.ground.plants.Lilac;
 import game.items.Seed;
+import game.items.Shovel;
 import game.items.Talisman;
-import game.items.weapons.Broadsword;
+import game.items.WateringCan;
 
 /**
  * <h1>Application</h1>
@@ -72,33 +75,44 @@ public class Application {
         Player player = new Player("Farmer", '@', 100, 200);
         player.addItemToInventory(new Seed(new Inheritree()));
         player.addItemToInventory(new Seed(new Bloodrose()));
+        player.addItemToInventory(new Seed(new Lilac()));
+        player.addItemToInventory(new Seed(new Daisy()));
+//        player.addItemToInventory(new Talisman());
 
         player.addBalance(10000);
         world.addPlayer(player, gameMap.at(23, 13));
 
         // game setup
-        gameMap.at(24, 11).addItem(new Talisman());
+        gameMap.at(24, 11).addItem(new Shovel());
+        gameMap.at(24, 10).addItem(new WateringCan());
 
-        OmenSheep sheep = new OmenSheep();
-        gameMap.at(16,6).addActor(sheep);
+        gameMap.at(24, 13).addActor(new Caterpillar());
+        gameMap.at(24, 14).setGround(new Daisy());
+        gameMap.at(23, 14).setGround(new Lilac());
+        gameMap.at(25, 13).setGround(new Daisy());
+        gameMap.at(25, 14).setGround(new Lilac());
 
-        SorceressSellen sellen = new SorceressSellen();
-        gameMap.at(22, 10).addActor(sellen);
 
-        MerchantKale kale = new MerchantKale();
-        gameMap.at(24,10).addActor(kale);
-
-        SpiritGoat goat3 =  new SpiritGoat();
-        gameMap.at(24,13).addActor(goat3);
-
-        OmenSheep sheep2 = new OmenSheep();
-        gameMap.at(22,13).addActor(sheep2);
-
-        OmenSheep sheep4 = new OmenSheep();
-        gameMap.at(21,8).addActor(sheep4);
-
-        GoldenBeetle beetle = new GoldenBeetle();
-        gameMap.at(23,14).addActor(beetle);
+//        OmenSheep sheep = new OmenSheep();
+//        gameMap.at(16,6).addActor(sheep);
+//
+//        SorceressSellen sellen = new SorceressSellen();
+//        gameMap.at(22, 10).addActor(sellen);
+//
+//        MerchantKale kale = new MerchantKale();
+//        gameMap.at(24,10).addActor(kale);
+//
+//        SpiritGoat goat3 =  new SpiritGoat();
+//        gameMap.at(24,13).addActor(goat3);
+//
+//        OmenSheep sheep2 = new OmenSheep();
+//        gameMap.at(22,13).addActor(sheep2);
+//
+//        OmenSheep sheep4 = new OmenSheep();
+//        gameMap.at(21,8).addActor(sheep4);
+//
+//        GoldenBeetle beetle = new GoldenBeetle();
+//        gameMap.at(23,14).addActor(beetle);
 
 
         world.run();

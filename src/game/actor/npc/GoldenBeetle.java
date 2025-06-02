@@ -7,7 +7,7 @@ import game.actions.ConsumeAction;
 import game.actor.Status;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.LayEggBehaviour;
-import game.items.GoldenEgg;
+import game.items.egg.GoldenEgg;
 
 /**
  * Class representing the Golden Beetle NPC
@@ -20,7 +20,6 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
     public GoldenBeetle() {
         super("Golden Beetle", 'b', 25);
         this.behaviours.put(1, new LayEggBehaviour(new GoldenEgg(this)));
-        this.behaviours.put(999, new FollowBehaviour());
     }
 
     /**
@@ -45,6 +44,7 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = super.allowableActions(otherActor, direction, map);
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            this.behaviours.put(999, new FollowBehaviour(otherActor));
             actions.add(new ConsumeAction(this, "+15 HP, +1000 Runes"));
         }
         return actions;

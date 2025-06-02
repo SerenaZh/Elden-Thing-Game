@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.actions.PlantAction;
-import game.ground.Planting;
+import game.ground.Plant;
 
 /**
  * Seed Item that can be carried by the Player
@@ -16,13 +16,13 @@ public class Seed extends Item {
     /**
      * The plant the seed grows into
      */
-    private Planting plant;
+    private Plant plant;
 
     /**
      * Constructor of the Seed
      * @param plant that it will grow into
      */
-    public Seed(Planting plant) {
+    public Seed(Plant plant) {
         super(plant.toString() + " seed", '*', true);
         this.plant = plant;
     }
@@ -32,9 +32,10 @@ public class Seed extends Item {
      * @param location the location of the ground on which the item lies
      * @return A list of actions that can be performed
      */
+    @Override
     public ActionList allowableActions(Location location) {
         ActionList actions = new ActionList();
-        if (location.getGround().hasCapability(Capabilities.PLANTABLE)) {
+        if (location.getGround().hasCapability(Capabilities.TILLED)) {
             actions.add(new PlantAction(this, plant));
         }
 

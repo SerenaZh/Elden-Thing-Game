@@ -11,7 +11,7 @@ import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
 import game.behaviours.LayEggBehaviourForSheep;
-import game.ground.Inheritree;
+import game.ground.plants.Inheritree;
 
 import java.util.List;
 
