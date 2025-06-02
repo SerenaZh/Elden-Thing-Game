@@ -14,11 +14,12 @@ public class WaterAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return "";
+        thirstyPlant.water();
+        return actor.toString() + " has watered the " + thirstyPlant.toString();
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "";
+        return actor.toString() + " waters " + thirstyPlant.toString();
     }
 }

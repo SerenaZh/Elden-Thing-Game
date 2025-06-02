@@ -13,17 +13,17 @@ public class Hole extends Ground {
         this.addCapability(Capabilities.TILLED);
     }
 
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction) {
-        ActionList actions = new ActionList();
-
-        if (actor.hasCapability(Capabilities.SHOVELABLE)) {
-            if (location.containsAnActor()) {
-                if (location.getActor() == actor) {
-                    actions.add(new ShovelAction());
-                }
-            }
-        }
-        return actions;
-    }
+//    @Override
+//    public ActionList allowableActions(Actor actor, Location location, String direction) {
+//        ActionList actions = new ActionList();
+//
+//        if (actor.hasCapability(Capabilities.SHOVELABLE)) {
+//            if (location.containsAnActor()) {
+//                if (location.getActor() == actor) {
+//                    actions.add(new ShovelAction());
+//                }
+//            }
+//        }
+//        return actions;
+//    }
 }

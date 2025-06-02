@@ -30,13 +30,15 @@ public class Lilac extends Ground implements Plant, Thirsty {
 
     @Override
     public boolean applyPlant(Actor actor, GameMap map) {
-        return false;
+        map.locationOf(actor).setGround(this);
+        return true;
     }
 
     @Override
     public void tick(Location location) {
         super.tick(location);
         this.decreaseCounter();
+        System.out.println(waterLevel);
         if (this.waterLevel <= 0) {
             location.setGround(new Soil());
         }

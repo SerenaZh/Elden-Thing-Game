@@ -30,7 +30,8 @@ public class Daisy extends Ground implements Plant, Thirsty {
 
     @Override
     public boolean applyPlant(Actor actor, GameMap map) {
-        return false;
+        map.locationOf(actor).setGround(this);
+        return true;
     }
 
     @Override
