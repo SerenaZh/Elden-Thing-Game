@@ -10,5 +10,7 @@ public enum Capabilities {
     CURABLE,
     BUYABLE,
     BLESSED_BY_GRACE,
-    TILLED
+    TILLED,
+    WATERABLE,
+    SHOVELABLE
 }

@@ -32,6 +32,7 @@ public class Seed extends Item {
      * @param location the location of the ground on which the item lies
      * @return A list of actions that can be performed
      */
+    @Override
     public ActionList allowableActions(Location location) {
         ActionList actions = new ActionList();
         if (location.getGround().hasCapability(Capabilities.PLANTABLE)) {

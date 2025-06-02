@@ -9,8 +9,12 @@ import game.ground.Soil;
 
 public class Daisy extends Ground implements Plant, Thirsty {
     private int waterLevel = 10;
+    private int originalWaterLevel;
 
-    public Daisy() {super('d', "Daisy");}
+    public Daisy() {
+        super('d', "Daisy");
+        this.originalWaterLevel = waterLevel;
+    }
 
     @Override
     public boolean applyPlant(Actor actor, GameMap map) {
@@ -28,7 +32,7 @@ public class Daisy extends Ground implements Plant, Thirsty {
 
     @Override
     public void water() {
-
+        this.waterLevel = originalWaterLevel;
     }
 
     @Override
