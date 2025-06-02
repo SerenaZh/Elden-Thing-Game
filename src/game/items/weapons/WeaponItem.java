@@ -7,8 +7,10 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.Capabilities;
 import game.actions.AttackAction;
 import game.actions.BuyAction;
+import game.actions.GiveAction;
 
 import java.util.List;
 import java.util.Random;
@@ -72,6 +74,9 @@ public class WeaponItem extends Item implements Weapon {
     public ActionList allowableActions(Actor otherActor, Location location) {
         ActionList actionList = super.allowableActions(otherActor, location);
         actionList.add(new AttackAction(otherActor, "direction", this));
+        if(otherActor.hasCapability(Capabilities.MERCHANT)){
+            actionList.add(new GiveAction(otherActor,this));
+        }
         return actionList;
     }
 }
