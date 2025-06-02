@@ -12,5 +12,6 @@ public enum Capabilities {
     BLESSED_BY_GRACE,
     TILLED,
     WATERABLE,
-    SHOVELABLE
+    SHOVELABLE,
+    CONSUMABLE
 }
