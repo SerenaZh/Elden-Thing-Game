@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.items.OmenEgg;
+import game.items.egg.OmenEgg;
 
 /**
  * A behaviour for the Omen Sheep that causes it to lay an {@link OmenEgg}every 7 turns.

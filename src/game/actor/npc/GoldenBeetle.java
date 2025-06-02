@@ -7,7 +7,7 @@ import game.actions.ConsumeAction;
 import game.actor.Status;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.LayEggBehaviour;
-import game.items.GoldenEgg;
+import game.items.egg.GoldenEgg;
 
 /**
  * Class representing the Golden Beetle NPC

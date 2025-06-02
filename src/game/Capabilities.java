@@ -9,6 +9,6 @@ public enum Capabilities {
     PLANTABLE,
     CURABLE,
     BUYABLE,
-    BLESSED_BY_GRACE
-
+    BLESSED_BY_GRACE,
+    TILLED
 }
