@@ -9,6 +9,7 @@ import game.Capabilities;
 import game.actions.BuyAction;
 import game.actor.Ability;
 import game.factions.Faction;
+import game.factions.FactionStandingManager;
 import game.items.Buyable;
 import game.items.purchaseeffect.PurchaseEffect;
 
@@ -21,10 +22,7 @@ import java.util.List;
  * @author Serena Zhou
  */
 public class DragonslayerGreatsword extends WeaponItem implements Buyable {
-    /**
-     * cost of Broadsword
-     */
-    private int cost;
+
     /**
      * ArrayList of Dragonslayer Greatsword's purchase effects
      */
@@ -36,9 +34,8 @@ public class DragonslayerGreatsword extends WeaponItem implements Buyable {
      * @param cost of Dragonslayer Greatsword
      */
     public DragonslayerGreatsword(int cost){
-        super("Dragonslayer Greatsword", 'D', 70, "strikes", 75);
+        super("Dragonslayer Greatsword", 'D', 70, "strikes", 75, cost);
         this.addCapability(Capabilities.BUYABLE);
-        this.cost = cost;
     }
 
     /**
@@ -93,8 +90,8 @@ public class DragonslayerGreatsword extends WeaponItem implements Buyable {
 
     @Override
     public void enforceFactionEffect() {
-        if(Faction.factionStandingManager.getFactionStanding(Capabilities.MERCHANT)>5){
-            this.cost=this.cost/2;
+        Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);        if(faction.getStanding()>5){
+            faction.factionEffect(this);
         }
     }
 
@@ -104,6 +101,10 @@ public class DragonslayerGreatsword extends WeaponItem implements Buyable {
      */
     @Override
     public int getCost() {
-        return cost;
+        int oldCost = this.cost;
+        enforceFactionEffect();
+        int newCost = this.cost;
+        this.cost = oldCost;
+        return newCost;
     }
 }

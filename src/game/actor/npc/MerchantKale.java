@@ -31,6 +31,7 @@ public class MerchantKale extends NonPlayableActor implements MonologueCapable {
     public MerchantKale(){
         super("Merchant Kale", 'k', 200);
         getBuyables();
+        this.addCapability(Capabilities.MERCHANT);
     }
 
     /**

@@ -1,28 +1,29 @@
 package game.factions;
 
-import edu.monash.fit2099.engine.positions.GameMap;
 import game.Capabilities;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class FactionStandingManager {
-    private Map<Capabilities, Faction> factionStanding = new HashMap<>();
+    public static Map<Capabilities, Faction> allFactions = new HashMap<>();
 
-    public int getFactionStanding(Capabilities factionKey) {
-        return factionStanding.get(factionKey).getStanding();
+    public FactionStandingManager() {
+        allFactions.put(Capabilities.MERCHANT,new MerchantFaction(Capabilities.MERCHANT));
+        allFactions.put(Capabilities.CREATURE,new MerchantFaction(Capabilities.CREATURE));
+        allFactions.put(Capabilities.ENEMY,new MerchantFaction(Capabilities.ENEMY));
+
+    }
+    public Faction getFaction(Capabilities factionKey) {
+        return allFactions.get(factionKey);
     }
 
-
-
-
     public void addFaction(Faction faction) {
-         for(Capabilities existingFactionKey : factionStanding.keySet() ) {
-             if (factionStanding.get(existingFactionKey).getID() == faction.getID()){
+         for(Capabilities existingFactionKey : allFactions.keySet() ) {
+             if (allFactions.get(existingFactionKey).getID() == faction.getID()){
                  return;
              }
          }
-         factionStanding.put(faction.getID(), faction);
+         allFactions.put(faction.getID(), faction);
     }
-
 }

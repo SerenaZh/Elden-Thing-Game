@@ -7,6 +7,7 @@ import game.Capabilities;
 import game.actions.BuyAction;
 import game.actor.Ability;
 import game.factions.Faction;
+import game.factions.FactionStandingManager;
 import game.items.Buyable;
 import game.items.purchaseeffect.PurchaseEffect;
 
@@ -19,10 +20,7 @@ import java.util.List;
  * @author Serena Zhou
  */
 public class Broadsword extends WeaponItem implements Buyable {
-    /**
-     * cost of Broadsword
-     */
-    private int cost;
+
     /**
      * ArrayList of Broadsword's purchase effects
      */
@@ -34,9 +32,9 @@ public class Broadsword extends WeaponItem implements Buyable {
      * @param cost of Broadsword
      */
     public Broadsword(int cost){
-        super("Broadsword", 'b', 30, "slashes", 50);
+        super("Broadsword", 'b', 30, "slashes", 50, cost);
         this.addCapability(Capabilities.BUYABLE);
-        this.cost = cost;
+
     }
 
     /**
@@ -89,8 +87,9 @@ public class Broadsword extends WeaponItem implements Buyable {
 
     @Override
     public void enforceFactionEffect() {
-        if(Faction.factionStandingManager.getFactionStanding(Capabilities.MERCHANT)>5){
-            this.cost=this.cost/2;
+        Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);
+        if (faction.getStanding() > 5) {
+            faction.factionEffect(this);
         }
     }
 
@@ -100,6 +99,10 @@ public class Broadsword extends WeaponItem implements Buyable {
      */
     @Override
     public int getCost() {
-        return cost;
+        int oldCost = this.cost;
+        enforceFactionEffect();
+        int newCost = this.cost;
+        this.cost = oldCost;
+        return newCost;
     }
 }

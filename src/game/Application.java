@@ -8,7 +8,9 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actor.Player;
+import game.actor.npc.MerchantKale;
 import game.actor.npc.creatures.Caterpillar;
+import game.factions.FactionStandingManager;
 import game.ground.*;
 import game.ground.plants.Bloodrose;
 import game.ground.plants.Daisy;
@@ -80,6 +82,7 @@ public class Application {
 
         player.addBalance(10000);
         world.addPlayer(player, gameMap.at(23, 13));
+        new FactionStandingManager();
 
         // game setup
         gameMap.at(24, 11).addItem(new Shovel());
@@ -98,8 +101,8 @@ public class Application {
 //        SorceressSellen sellen = new SorceressSellen();
 //        gameMap.at(22, 10).addActor(sellen);
 //
-//        MerchantKale kale = new MerchantKale();
-//        gameMap.at(24,10).addActor(kale);
+        MerchantKale kale = new MerchantKale();
+        gameMap.at(21,10).addActor(kale);
 //
 //        SpiritGoat goat3 =  new SpiritGoat();
 //        gameMap.at(24,13).addActor(goat3);

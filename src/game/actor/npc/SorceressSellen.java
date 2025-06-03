@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Capabilities;
 import game.actions.BuyAction;
 import game.actions.ListenAction;
 import game.actor.npc.creatures.GoldenBeetle;
@@ -33,6 +34,7 @@ public class SorceressSellen extends NonPlayableActor implements MonologueCapabl
     public SorceressSellen(){
         super("Sorceress Sellen",'s', 150);
         getBuyables();
+        this.addCapability(Capabilities.MERCHANT);
     }
 
     /**

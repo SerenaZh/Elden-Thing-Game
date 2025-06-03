@@ -4,6 +4,9 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Capabilities;
+import game.factions.Faction;
+import game.factions.FactionStandingManager;
 
 
 /**
@@ -27,7 +30,11 @@ public class GiveAction extends Action {
     public String execute(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this.item);
         this.target.addItemToInventory(this.item);
-        return "Farmer gave "+this.item.toString()+" to "+this.target.toString();
+
+        Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);
+        faction.increaseStanding(1);
+
+        return "Farmer gave "+this.item.toString()+" to "+this.target.toString()+", you standing is as follows: "+faction;
     }
 
     /**

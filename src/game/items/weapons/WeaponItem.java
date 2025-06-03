@@ -26,6 +26,7 @@ public class WeaponItem extends Item implements Weapon {
     private int hitRate;
     private final String verb;
     private float damageMultiplier;
+    protected int cost;
 
     /**
      * Constructor.
@@ -36,12 +37,17 @@ public class WeaponItem extends Item implements Weapon {
      * @param verb        verb to use for this weapon, e.g. "hits", "zaps"
      * @param hitRate     the probability/chance to hit the target.
      */
-    public WeaponItem(String name, char displayChar, int damage, String verb, int hitRate) {
+    public WeaponItem(String name, char displayChar, int damage, String verb, int hitRate, int cost) {
         super(name, displayChar, true);
         this.damage = damage;
         this.verb = verb;
         this.hitRate = hitRate;
         this.damageMultiplier = DEFAULT_DAMAGE_MULTIPLIER;
+        this.cost = cost;
+    }
+
+    public void modifyCost(int costModifier) {
+        this.cost = this.cost/costModifier;
     }
 
     /**
@@ -79,4 +85,5 @@ public class WeaponItem extends Item implements Weapon {
         }
         return actionList;
     }
+
 }

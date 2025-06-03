@@ -7,6 +7,7 @@ import game.Capabilities;
 import game.actions.BuyAction;
 import game.actor.Ability;
 import game.factions.Faction;
+import game.factions.FactionStandingManager;
 import game.items.Buyable;
 import game.items.purchaseeffect.PurchaseEffect;
 
@@ -19,10 +20,7 @@ import java.util.List;
  * @author Serena Zhou
  */
 public class Katana extends WeaponItem implements Buyable {
-    /**
-     * cost of Katana
-     */
-    private int cost;
+
     /**
      * ArrayList of Katana's purchase effects
      */
@@ -34,9 +32,8 @@ public class Katana extends WeaponItem implements Buyable {
      * @param cost of Katana
      */
     public Katana(int cost){
-        super("Katana", 'j', 50, "slices", 60);
+        super("Katana", 'j', 50, "slices", 60, cost);
         this.addCapability(Capabilities.BUYABLE);
-        this.cost = cost;
     }
 
     /**
@@ -74,8 +71,10 @@ public class Katana extends WeaponItem implements Buyable {
      */
     @Override
     public boolean purchase(Actor actor, GameMap map) {
+        int oldCost = cost;
         enforceFactionEffect();
         if (actor.getBalance() < cost) {
+            this.cost = oldCost;
             return false;
         }
         actor.deductBalance(cost);
@@ -84,13 +83,15 @@ public class Katana extends WeaponItem implements Buyable {
         for (PurchaseEffect effect: this.getAllEffects()) {
             effect.applyEffect(actor, map);
         }
+        this.cost = oldCost;
         return true;
     }
 
     @Override
     public void enforceFactionEffect() {
-        if(Faction.factionStandingManager.getFactionStanding(Capabilities.MERCHANT)>5){
-            this.cost=this.cost/2;
+        Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);
+        if(faction.getStanding()>=5){
+            faction.factionEffect(this);
         }
     }
 
@@ -100,6 +101,10 @@ public class Katana extends WeaponItem implements Buyable {
      */
     @Override
     public int getCost() {
-        return cost;
+        int oldCost = this.cost;
+        enforceFactionEffect();
+        int newCost = this.cost;
+        this.cost = oldCost;
+        return newCost;
     }
 }
