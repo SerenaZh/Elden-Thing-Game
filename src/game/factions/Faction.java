@@ -41,6 +41,8 @@ public abstract class Faction {
 
     public abstract void factionEffect(WeaponItem weapon);
 
+
+
     @Override
     public String toString() {
         return this.factionID.toString()+": "+this.standing;
