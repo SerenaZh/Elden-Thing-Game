@@ -1,4 +1,4 @@
-package game.actor.npc;
+package game.actor.npc.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -10,6 +10,8 @@ import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
+import game.actor.npc.ActorFactory;
+import game.actor.npc.NonPlayableActor;
 import game.behaviours.LayEggBehaviourForSheep;
 import game.ground.plants.Inheritree;
 

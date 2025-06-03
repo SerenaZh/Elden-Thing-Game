@@ -10,7 +10,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
-import game.actions.ShovelAction;
 
 /**
  * A class representing a blight covering the ground of the valley.

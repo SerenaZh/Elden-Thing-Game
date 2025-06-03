@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actor.npc.OmenSheep;
+import game.actor.npc.creatures.OmenSheep;
 import game.actor.npc.ActorFactory;
 
 /**
