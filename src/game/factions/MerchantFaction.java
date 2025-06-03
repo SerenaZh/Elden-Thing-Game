@@ -6,8 +6,9 @@ import game.Capabilities;
 import java.util.ArrayList;
 
 public class MerchantFaction extends Faction {
-    public MerchantFaction(ArrayList<Capabilities> affectionables) {
-        super(affectionables);
+    public MerchantFaction(Capabilities capability) {
+        super(capability);
+        super.factionStandingManager.addFaction(this);
     }
 
     @Override
