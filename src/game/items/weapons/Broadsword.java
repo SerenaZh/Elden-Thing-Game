@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.Capabilities;
 import game.actions.BuyAction;
 import game.actor.Ability;
+import game.factions.Faction;
 import game.items.Buyable;
 import game.items.purchaseeffect.PurchaseEffect;
 
@@ -73,6 +74,7 @@ public class Broadsword extends WeaponItem implements Buyable {
      */
     @Override
     public boolean purchase(Actor actor, GameMap map) {
+        enforceFactionEffect();
         if (actor.getBalance() < cost) {
             return false;
         }
@@ -83,6 +85,13 @@ public class Broadsword extends WeaponItem implements Buyable {
             effect.applyEffect(actor, map);
         }
         return true;
+    }
+
+    @Override
+    public void enforceFactionEffect() {
+        if(Faction.factionStandingManager.getFactionStanding(Capabilities.MERCHANT)>5){
+            this.cost=this.cost/2;
+        }
     }
 
     /**

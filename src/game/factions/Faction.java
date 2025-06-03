@@ -28,7 +28,7 @@ public abstract class Faction {
             this.standing-=amount;
             return;
         }
-        this.standing=10;
+        this.standing=standingCiel;
     }
 
     public void decreaseStanding(int amount) {
@@ -36,7 +36,7 @@ public abstract class Faction {
             this.standing-=amount;
             return;
         }
-        this.standing=0;
+        this.standing=getStandingFloor;
     }
 
     public abstract void factionEffect(Actor actor);

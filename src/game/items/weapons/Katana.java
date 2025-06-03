@@ -87,7 +87,8 @@ public class Katana extends WeaponItem implements Buyable {
         return true;
     }
 
-    private void enforceFactionEffect() {
+    @Override
+    public void enforceFactionEffect() {
         if(Faction.factionStandingManager.getFactionStanding(Capabilities.MERCHANT)>5){
             this.cost=this.cost/2;
         }

@@ -23,4 +23,6 @@ public interface Buyable {
      * @return int reflecting the cost of the Buyable
      */
     int getCost();
+
+    void enforceFactionEffect();
 }
