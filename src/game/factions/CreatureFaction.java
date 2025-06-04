@@ -12,5 +12,7 @@ public class CreatureFaction extends Faction {
         decreaseStanding(1);
     }
 
-
+    public boolean shouldAvoidPlayer() {
+        return getStanding() < 2;
+    }
 }
