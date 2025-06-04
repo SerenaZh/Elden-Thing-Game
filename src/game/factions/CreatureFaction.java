@@ -1,4 +1,6 @@
 package game.factions;
 
-public class CreatureFaction {
+
+public class CreatureFaction extends Faction {
+    
 }
