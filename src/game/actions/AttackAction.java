@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.Capabilities;
+import game.factions.FactionStandingManager;
 import game.items.weapons.WeaponItem;
 
 /**
@@ -65,6 +67,11 @@ public class AttackAction extends Action {
     public String execute(Actor actor, GameMap map) {
         if (weapon == null) {
             weapon = actor.getIntrinsicWeapon();
+        }
+
+        //Checking if target is part of the creature faction and that the player is attacking.
+        if (target.hasCapability(Capabilities.CREATURE) && actor.getDisplayChar()=='@'){
+            FactionStandingManager.allFactions.get(Capabilities.CREATURE).decreaseStanding(1);
         }
 
         String result = weapon.attack(actor, target, map);
