@@ -59,6 +59,24 @@ public class Application {
         GameMap gameMap = new GameMap("Valley of the Inheritree", groundFactory, map);
         world.addGameMap(gameMap);
 
+        List<String> limveldMap = Arrays.asList(
+                ".............xxxx",
+                "..............xxx",
+                "................x",
+                ".................",
+                "................x",
+                "...............xx",
+                "..............xxx",
+                "..............xxx",
+                "..............xxx",
+                ".............xxxx",
+                ".............xxxx",
+                "....xxx.....xxxxx",
+                "....xxxx...xxxxxx");
+
+        GameMap limveld = new GameMap("Limeveld", groundFactory, limveldMap);
+        world.addGameMap(limveld);
+
         // BEHOLD, ELDEN THING!
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
