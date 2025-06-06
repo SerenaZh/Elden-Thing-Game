@@ -77,6 +77,9 @@ public class Application {
         GameMap limveld = new GameMap("Limeveld", groundFactory, limveldMap);
         world.addGameMap(limveld);
 
+        gameMap.at(10, 10).setGround(new TeleportationCircle(limveld, 1, 1));
+        limveld.at(1, 1).setGround(new TeleportationCircle(gameMap, 10, 10));
+
         // BEHOLD, ELDEN THING!
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
