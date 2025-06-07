@@ -3,8 +3,6 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -21,25 +19,28 @@ import game.items.Talisman;
  * <h1>Application</h1>
  * The main class to set up and run the game.
  * <p>
- *    Where the main application is initalised to run
+ *    Where the main application is initialized to run
  * </p>
  * @author Adrian Kristanto
  * @version 2.0
  * @since 07/04/2025
- * Modified by Serena Zhou
+ * Modified by Serena Zhou, Khushi R
  */
 public class Application {
     /**
-     * Main method that can run the program
+     * Main method that initializes and runs the game.
+     * Sets up the game world, creates maps, places actors and items,
+     * and starts the game loop.
+     *
      * @param args
      */
     public static void main(String[] args) {
-
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Blight(),
                 new Wall(), new Floor(), new Soil());
 
+        //create the main "Valley of the Inheritree" game map
         List<String> map = Arrays.asList(
                 "xxxx...xxxxxxxxxxxxxxxxxxxxxxx........xx",
                 "xxx.....xxxxxxx..xxxxxxxxxxxxx.........x",
@@ -60,6 +61,7 @@ public class Application {
         GameMap gameMap = new GameMap("Valley of the Inheritree", groundFactory, map);
         world.addGameMap(gameMap);
 
+        //create the "Limveld" game map
         List<String> limveldMap = Arrays.asList(
                 ".............xxxx",
                 "..............xxx",
@@ -78,11 +80,11 @@ public class Application {
         GameMap limveld = new GameMap("Limveld", groundFactory, limveldMap);
         world.addGameMap(limveld);
 
-        // Setup teleportation circle
+        // setup teleportation circle on the game map
         gameMap.at(10, 10).setGround(new TeleportationCircle(limveld, 1, 1));
         limveld.at(1, 1).setGround(new TeleportationCircle(gameMap, 10, 10));
 
-        //test
+        //add test actors to the Limveld map for testing purposes
         limveld.at(2, 2).addActor(new SpiritGoat(new SelectPriorityBehaviour()));
         limveld.at(3, 3).addActor(new SpiritGoat(new SelectRandomBehaviour()));
 
