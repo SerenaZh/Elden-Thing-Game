@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actor.npc.*;
 import game.actor.Player;
+import game.actor.BedOfChaos;
 import game.ground.*;
 import game.items.Seed;
 import game.items.Talisman;
@@ -74,7 +75,7 @@ public class Application {
         player.addItemToInventory(new Seed(new Bloodrose()));
 
         player.addBalance(10000);
-        world.addPlayer(player, gameMap.at(23, 13));
+        world.addPlayer(player, gameMap.at(23, 13)); // 23 13
 
         // game setup
         gameMap.at(24, 11).addItem(new Talisman());
@@ -100,6 +101,8 @@ public class Application {
         GoldenBeetle beetle = new GoldenBeetle();
         gameMap.at(23,14).addActor(beetle);
 
+        BedOfChaos chaos = new BedOfChaos();
+        gameMap.at(30, 5).addActor(chaos);
 
         world.run();
     }
