@@ -5,6 +5,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.ground.Hole;
 
+/**
+ * Class representing the action to dig holes
+ *
+ * @author Serena Zhou
+ */
 public class ShovelAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
