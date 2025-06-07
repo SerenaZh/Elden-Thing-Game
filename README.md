@@ -72,16 +72,17 @@ Substitution principle.
 Req3 - Approved by Jordan May 28th 16:06
 
 Creative REQ4
-Affection level system.
-1) There will be an Affectionable interface which (select) npcs implement.
+Affection level/Factions system.
+1) There will be an Affectionable interface which (select) npc factions.
 - For instance, the farmer can give items to the NPCs, which will increase or decrease their affection level towards the farmer.
-- Each NPC type can be affected by different actions as well:
-  - By doing good things, like planting trees, farmer can increase their standing with animal npc
-  - By buying things farmer can increase their standing with merchants
-2) There will also be a Faction class (higher level class)
-- merchant faction
-- enemy faction
-- animal faction
-  Your standing with a faction can affect prices or behaviour.
+- Each NPC faction type can be affected by different actions as well:
+  - By doing good things, like planting trees, farmer can increase their standing with animal npc or hostile npc factions
+  - By giving items farmer can increase their standing with merchants npc factions
+2) There will need to be a Faction class (higher level class)
+- Merchant faction
+- Hostile faction
+- Creature faction
+Your standing with a faction can affect prices or behaviour.
 - for example if your standing with the merchant faction is below 5, you get 50% surcharge for items
 - if your standing with friendly animals is less than 5, they will avoid you (move away when you move close)
+- conversely if your standing with the Hostile faction is high enough, they will be more likely to move away after attacking you
