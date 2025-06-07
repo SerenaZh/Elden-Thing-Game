@@ -1,6 +1,8 @@
 package game.actor;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Exit;
@@ -31,33 +33,37 @@ public class BedOfChaos extends NonPlayableActor {
         this.setIntrinsicWeapon(new BareFist(baseDamage, "smacks", accuracy));
     }
 
+    /**
+     * Called every turn by the engine.
+     */
     @Override
-    public void tick(Location location) {
-        super.tick(location);
-        boolean attacked = attackNearby(location.map());
+    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        boolean attacked = attackNearby(map, display);
+
         if (!attacked) {
-            grow();
+            grow(display);
         }
 
         for (TreePart part : treeParts) {
             part.tick(this);
         }
+
+        return new DoNothingAction();
     }
 
     /**
      * Attacks the first actor it finds in surrounding tiles with full attack power.
      */
-    private boolean attackNearby(GameMap map) {
+    private boolean attackNearby(GameMap map, Display display) {
         Location here = map.locationOf(this);
         for (Exit exit : here.getExits()) {
             Location dest = exit.getDestination();
             if (dest.containsAnActor()) {
                 Actor target = dest.getActor();
-                if (target != null && target != this) {
+                if (target != null && target != this && target.isConscious()) {
                     int totalDamage = calculateTotalAttack();
                     this.setIntrinsicWeapon(new BareFist(totalDamage, "smacks", accuracy));
-                    ActionList actions = target.allowableActions(this, exit.getName(), map);
-                    new Display().println(this + " " + this.getIntrinsicWeapon().verb() + " " + target + " for " + totalDamage + " damage");
+                    display.println(this + " smacks " + target + " for " + totalDamage + " damage");
                     target.hurt(totalDamage);
                     return true;
                 }
@@ -69,11 +75,11 @@ public class BedOfChaos extends NonPlayableActor {
     /**
      * Grows a new Branch or Leaf at the top level.
      */
-    private void grow() {
+    private void grow(Display display) {
         TreePart newPart = rand.nextBoolean() ? new Branch() : new Leaf();
         treeParts.add(newPart);
-        System.out.println("Bed of Chaos is growing...");
-        System.out.println("it grows a " + newPart + "...");
+        display.println("Bed of Chaos is growing...");
+        display.println("it grows a " + newPart + "...");
     }
 
     /**
@@ -85,11 +91,6 @@ public class BedOfChaos extends NonPlayableActor {
             total += part.getAttackBonus();
         }
         return total;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 }
 
