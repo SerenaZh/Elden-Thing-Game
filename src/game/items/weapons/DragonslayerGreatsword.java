@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Affectionable;
 import game.Capabilities;
 import game.actions.BuyAction;
 import game.actor.Ability;
@@ -21,7 +22,7 @@ import java.util.List;
  * Class representing a Dragonslayer Greatsword WeaponItem. This will be a Buyable Item as well.
  * @author Serena Zhou
  */
-public class DragonslayerGreatsword extends WeaponItem implements Buyable {
+public class DragonslayerGreatsword extends WeaponItem implements Buyable, Affectionable {
 
     /**
      * ArrayList of Dragonslayer Greatsword's purchase effects
@@ -73,7 +74,7 @@ public class DragonslayerGreatsword extends WeaponItem implements Buyable {
      */
     @Override
     public boolean purchase(Actor actor, GameMap map) {
-        enforceFactionEffect();
+        affectFaction(actor);
         if (actor.getBalance() < cost) {
             return false;
         }
@@ -89,7 +90,7 @@ public class DragonslayerGreatsword extends WeaponItem implements Buyable {
     }
 
     @Override
-    public void enforceFactionEffect() {
+    public void affectFaction(Actor actor) {
         Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);        if(faction.getStanding()>5){
             faction.factionEffect(this);
         }
@@ -101,10 +102,16 @@ public class DragonslayerGreatsword extends WeaponItem implements Buyable {
      */
     @Override
     public int getCost() {
-        int oldCost = this.cost;
-        enforceFactionEffect();
-        int newCost = this.cost;
-        this.cost = oldCost;
-        return newCost;
+        Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);
+        if(faction.getStanding()>=5) {
+            int oldCost = this.cost;
+            this.modifyCost(2);
+            int newCost = this.cost;
+            this.cost = oldCost;
+            return newCost;
+        }
+        else{
+            return this.cost;
+        }
     }
 }

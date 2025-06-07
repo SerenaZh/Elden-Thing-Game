@@ -16,7 +16,7 @@ public class MerchantFaction extends Faction {
 
     @Override
     public void factionEffect(NonPlayableActor actor) {
-        //Nothing
+        //N/A
     }
 
 }

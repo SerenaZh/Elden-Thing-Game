@@ -11,8 +11,7 @@ public class FactionStandingManager {
     public FactionStandingManager() {
         allFactions.put(Capabilities.MERCHANT,new MerchantFaction(Capabilities.MERCHANT));
         allFactions.put(Capabilities.CREATURE,new MerchantFaction(Capabilities.CREATURE));
-        allFactions.put(Capabilities.ENEMY,new MerchantFaction(Capabilities.ENEMY));
-
+        allFactions.put(Capabilities.HOSTILE,new MerchantFaction(Capabilities.HOSTILE));
     }
     public Faction getFaction(Capabilities factionKey) {
         return allFactions.get(factionKey);
