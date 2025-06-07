@@ -2,12 +2,14 @@ package game.actor.npc;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.AttackAction;
 import game.actor.Status;
+import game.behaviours.SelectBehaviour;
 import game.behaviours.WanderBehaviour;
 
 import java.util.Map;
@@ -18,6 +20,7 @@ import java.util.TreeMap;
  * A NPC class for any NPCs that are in the game, who cannot be played by the user
  *
  * @authors Serena Zhou & Aryan M
+ * Modified by Khushi R
  */
 public abstract class NonPlayableActor extends Actor {
     /**
@@ -33,6 +36,8 @@ public abstract class NonPlayableActor extends Actor {
      */
     public static final int wanderRank=999;
 
+    private final SelectBehaviour behaviourSelector;
+
     /**
      * The constructor of the NonPlayableActor class.
      *
@@ -40,9 +45,10 @@ public abstract class NonPlayableActor extends Actor {
      * @param displayChar the character that will represent the NonPlayableActor in the display
      * @param hitPoints   the NonPlayableActor's starting hit points
      */
-    public NonPlayableActor(String name, char displayChar, int hitPoints) {
+    public NonPlayableActor(String name, char displayChar, int hitPoints, SelectBehaviour select) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(wanderRank, new WanderBehaviour());
+        this.behaviourSelector = select;
     }
 
     /**
@@ -67,17 +73,12 @@ public abstract class NonPlayableActor extends Actor {
         if (!this.isConscious()) {
             this.unconscious(map);
         }
-        for (Behaviour behaviour : behaviours.values()) {
-            if (!map.contains(this)) {
-                break;
-            }
-            Action action = behaviour.getAction(this, map);
+            Action action = behaviourSelector.selectBehaviour(behaviours, this, map);
             if (action != null)
                 return action;
-        }
 
-        return actions.get(rand.nextInt(actions.size()));
-    }
+            return new DoNothingAction();
+        }
 
     /**
      * The allowable actions that a NonPlayableActor can be performed on
