@@ -11,12 +11,23 @@ import game.ground.Hole;
  * @author Serena Zhou
  */
 public class ShovelAction extends Action {
+    /**
+     * Executes the hole digging action
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         map.locationOf(actor).setGround(new Hole());
         return actor.toString() + " has dug a new hole!";
     }
 
+    /**
+     * Menu description for players to perform the action
+     * @param actor The actor performing the action.
+     * @return Menu description String
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor.toString() + " digs a hole";
