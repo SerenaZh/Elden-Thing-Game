@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Capabilities;
 import game.actions.AttackAction;
 import game.actor.Status;
 import game.behaviours.WanderBehaviour;
@@ -13,6 +14,7 @@ import game.behaviours.WanderBehaviour;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.spi.CalendarDataProvider;
 
 /**
  * A NPC class for any NPCs that are in the game, who cannot be played by the user
@@ -93,5 +95,13 @@ public abstract class NonPlayableActor extends Actor {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
+    }
+
+    public void addBehaviour(int key, Behaviour behaviour){
+        this.behaviours.put(key, behaviour);
+    }
+
+    public void removeBehaviour(int key){
+        this.behaviours.remove(key);
     }
 }

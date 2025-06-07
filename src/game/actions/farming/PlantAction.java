@@ -4,6 +4,10 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Affectionable;
+import game.Capabilities;
+import game.factions.Faction;
+import game.factions.FactionStandingManager;
 import game.ground.plants.Plant;
 
 /**
@@ -12,7 +16,7 @@ import game.ground.plants.Plant;
  * otherwise it will throw an error
  * @author Serena Zhou
  */
-public class PlantAction extends Action {
+public class PlantAction extends Action implements Affectionable {
     /**
      * The plant to be planted
      */
@@ -41,6 +45,7 @@ public class PlantAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
+        affectFaction(actor);
         map.locationOf(actor).removeItem(seed);
         if (plant.applyPlant(actor, map)) {
             return actor.toString() + " has planted the " + seed.toString();
@@ -57,6 +62,16 @@ public class PlantAction extends Action {
     @Override
     public String menuDescription(Actor actor) {
         return actor.toString() + " plants the " + seed.toString();
+    }
+
+    private void creatureAndHostileStandingBoost(){
+        FactionStandingManager.allFactions.get(Capabilities.HOSTILE).increaseStanding(1);
+        FactionStandingManager.allFactions.get(Capabilities.CREATURE).increaseStanding(1);
+    }
+
+    @Override
+    public void affectFaction(Actor actor) {
+        this.creatureAndHostileStandingBoost();
     }
 
 }

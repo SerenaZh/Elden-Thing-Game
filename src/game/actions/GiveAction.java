@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Affectionable;
 import game.Capabilities;
 import game.factions.Faction;
 import game.factions.FactionStandingManager;
@@ -13,7 +14,7 @@ import game.factions.FactionStandingManager;
  *
  */
 
-public class GiveAction extends Action {
+public class GiveAction extends Action implements Affectionable {
     private Item item;
     private Actor target;
     public GiveAction(Actor target, Item item) {
@@ -31,8 +32,8 @@ public class GiveAction extends Action {
         actor.removeItemFromInventory(this.item);
         this.target.addItemToInventory(this.item);
 
+        affectFaction(actor);
         Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);
-        faction.increaseStanding(1);
 
         return "Farmer gave "+this.item.toString()+" to "+this.target.toString()+", you standing is as follows: "+faction;
     }
@@ -45,5 +46,11 @@ public class GiveAction extends Action {
     @Override
     public String menuDescription(Actor actor) {
         return "Give " + this.item.toString() + " to " + this.target.toString();
+    }
+
+    @Override
+    public void affectFaction(Actor actor) {
+        Faction faction = FactionStandingManager.allFactions.get(Capabilities.MERCHANT);
+        faction.increaseStanding(1);
     }
 }

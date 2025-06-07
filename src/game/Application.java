@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actor.Player;
 import game.actor.npc.creatures.Caterpillar;
+import game.factions.FactionStandingManager;
 import game.ground.*;
 import game.ground.plants.Bloodrose;
 import game.ground.plants.Daisy;
@@ -85,13 +86,14 @@ public class Application {
         gameMap.at(24, 11).addItem(new Shovel());
         gameMap.at(24, 10).addItem(new WateringCan());
 
-        gameMap.at(24, 13).addActor(new Caterpillar());
+        //gameMap.at(24, 13).addActor(new Caterpillar());
         gameMap.at(24, 14).setGround(new Daisy());
         gameMap.at(23, 14).setGround(new Lilac());
         gameMap.at(25, 13).setGround(new Daisy());
         gameMap.at(25, 14).setGround(new Lilac());
 
-
+        //Initialising Factions and manager
+        new FactionStandingManager();
 //        OmenSheep sheep = new OmenSheep();
 //        gameMap.at(16,6).addActor(sheep);
 //

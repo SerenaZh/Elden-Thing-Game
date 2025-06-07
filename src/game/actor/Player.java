@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.BareFist;
+import game.Capabilities;
 import game.FancyMessage;
 import game.actions.UseEggAction;
 import game.items.egg.Egg;
@@ -31,6 +32,7 @@ public class Player extends Actor {
     public Player(String name, char displayChar, int hitPoints, int staminaPoints) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
+        this.addCapability(Capabilities.PLAYER);
         this.setIntrinsicWeapon(new BareFist());
         this.addAttribute(BaseActorAttributes.STAMINA, new BaseActorAttribute(staminaPoints));
     }

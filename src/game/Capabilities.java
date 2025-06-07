@@ -17,5 +17,6 @@ public enum Capabilities {
     MERCHANT,
     ENEMY,
     CREATURE,
-    HOSTILE
+    HOSTILE,
+    PLAYER,
 }

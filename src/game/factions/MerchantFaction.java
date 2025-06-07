@@ -1,5 +1,6 @@
 package game.factions;
 import game.Capabilities;
+import game.actor.npc.NonPlayableActor;
 import game.items.weapons.WeaponItem;
 
 public class MerchantFaction extends Faction {
@@ -12,4 +13,10 @@ public class MerchantFaction extends Faction {
     public void factionEffect(WeaponItem weapon) {
         weapon.modifyCost(2);
     }
+
+    @Override
+    public void factionEffect(NonPlayableActor actor) {
+        //Nothing
+    }
+
 }

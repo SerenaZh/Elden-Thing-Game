@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.BareFist;
+import game.Capabilities;
 import game.actions.ListenAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.MonologueCapable;
@@ -26,6 +27,7 @@ public class Guts extends NonPlayableActor implements MonologueCapable {
     public Guts() {
         super("Guts", 'g', 500);
         this.setIntrinsicWeapon(new BareFist());
+        this.addCapability(Capabilities.HOSTILE);
         this.behaviours.put(1, new AttackBehaviour());
         this.behaviours.put(999, new WanderBehaviour());
     }

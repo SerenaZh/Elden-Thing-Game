@@ -10,31 +10,15 @@ import game.actor.Player;
 
 public class AvoidBehaviour implements Behaviour {
 
-    private final Player player;
-
-    public AvoidBehaviour(Player player) {
-        this.player = player;
-    }
-
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        if (!map.contains(player) || !map.contains(actor))
-            return null;
-
-        Location npcLocation = map.locationOf(actor);
-        Location playerLocation = map.locationOf(player);
-
-        if (!isCardinalAdjacent(npcLocation, playerLocation)) {
-            return null;
-        }
-
-        for (Exit exit : npcLocation.getExits()) {
-            Location destination = exit.getDestination();
-            if (destination.canActorEnter(actor) && !isCardinalAdjacent(destination, playerLocation)) {
-                return new MoveActorAction(destination, exit.getName());
+        for(Exit exit : map.locationOf(actor).getExits()){
+            if(exit.getDestination().containsAnActor()){
+                if(exit.getDestination().getActor().getDisplayChar()=='@'){
+                    return exit.getDestination().getMoveAction(actor,"around",exit.getHotKey());
+                }
             }
         }
-
         return null;
     }
 

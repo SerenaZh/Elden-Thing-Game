@@ -79,7 +79,6 @@ Affection level system.
   - By doing good things, like planting trees, farmer can increase their standing with animal npc
   - By buying things farmer can increase their standing with merchants
 2) There will also be a Faction class (higher level class)
-- there will be a noble faction
 - merchant faction
 - enemy faction
 - animal faction

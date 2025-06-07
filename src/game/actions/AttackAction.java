@@ -4,7 +4,10 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.Affectionable;
 import game.Capabilities;
+import game.actor.npc.NonPlayableActor;
+import game.factions.Faction;
 import game.factions.FactionStandingManager;
 import game.items.weapons.WeaponItem;
 
@@ -17,7 +20,7 @@ import game.items.weapons.WeaponItem;
  * @author Adrian Kristanto
  * Modified by: Serena Zhou
  */
-public class AttackAction extends Action {
+public class AttackAction extends Action implements Affectionable {
 
     /**
      * The Actor that is to be attacked
@@ -69,10 +72,7 @@ public class AttackAction extends Action {
             weapon = actor.getIntrinsicWeapon();
         }
 
-        //Checking if target is part of the creature faction and that the player is attacking.
-        if (target.hasCapability(Capabilities.CREATURE) && actor.getDisplayChar()=='@'){
-            FactionStandingManager.allFactions.get(Capabilities.CREATURE).decreaseStanding(1);
-        }
+        affectFaction(actor);
 
         String result = weapon.attack(actor, target, map);
         if (!target.isConscious()) {
@@ -90,5 +90,18 @@ public class AttackAction extends Action {
     @Override
     public String menuDescription(Actor actor) {
         return actor + " attacks " + target + " at " + direction + " with " + (weapon != null ? weapon : "Intrinsic Weapon");
+    }
+
+    public void affectFaction(Actor actor) {
+        //Checking if target is part of the creature faction and that the player is attacking.
+        if (target.hasCapability(Capabilities.CREATURE) && actor.getDisplayChar()=='@'){
+            Faction creatureFaction = FactionStandingManager.allFactions.get(Capabilities.CREATURE);
+            creatureFaction.factionEffect((NonPlayableActor) target);
+        }
+
+        if (actor.hasCapability(Capabilities.HOSTILE) && actor.getDisplayChar()=='@'){
+            Faction hostile = FactionStandingManager.allFactions.get(Capabilities.HOSTILE);
+            hostile.factionEffect((NonPlayableActor) actor);
+        }
     }
 }

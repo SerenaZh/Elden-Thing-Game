@@ -2,6 +2,7 @@ package game.factions;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import game.Capabilities;
+import game.actor.npc.NonPlayableActor;
 import game.items.weapons.WeaponItem;
 
 public abstract class Faction {
@@ -40,6 +41,8 @@ public abstract class Faction {
     }
 
     public abstract void factionEffect(WeaponItem weapon);
+    public abstract void factionEffect(NonPlayableActor target);
+
 
 
 
