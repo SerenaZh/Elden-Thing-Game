@@ -11,21 +11,35 @@ import game.factions.FactionStandingManager;
 
 
 /**
+ *Class representing the player giving something to a npc
  *
- */
+ * Author: Aryan M
+ **/
 
 public class GiveAction extends Action implements Affectionable {
+    /**
+     *Item being given
+     **/
     private Item item;
+    /**
+     *The target who is receiving item
+     **/
     private Actor target;
+
+    /**
+     *Initialising GiveAction
+     * @param target who is receiving item
+     * @param item being given
+     **/
     public GiveAction(Actor target, Item item) {
         this.item = item;
         this.target = target;
     }
 
     /**
-     * Constructor
-     * @param actor that is buying the buyable
-     * @param map map player is.
+     * Method to execute action
+     * @param actor who is GIVING the item
+     * @param map in which this takes place
      */
     @Override
     public String execute(Actor actor, GameMap map) {
