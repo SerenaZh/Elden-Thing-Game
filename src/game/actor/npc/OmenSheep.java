@@ -29,6 +29,10 @@ public class OmenSheep extends SelectableBehaviourCreature implements Curable, A
      */
     private StatusEffect rotEffect = new RotEffect(15);
 
+    /**
+     * Default constructor for Omen Sheep.
+     * Creates an Omen Sheep with priority-based behavior selection.
+     */
     public OmenSheep() {
         this(new SelectPriorityBehaviour());
     }
@@ -78,9 +82,11 @@ public class OmenSheep extends SelectableBehaviourCreature implements Curable, A
     }
 
     /**
-     * Create a new instance of the current class
+     * Creates a new instance of Omen Sheep with the same behavior selection strategy.
+     * This method is used by the ActorFactory interface to create consistent offspring
+     * or new instances that inherit the parent's behavior selection pattern.
      *
-     * @return Actor of the current class
+     * @return a new Omen Sheep instance with the same behavior selector as this one
      */
     @Override
     public Actor createNewInstance() {

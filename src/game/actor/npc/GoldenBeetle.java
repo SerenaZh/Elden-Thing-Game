@@ -16,6 +16,10 @@ import game.items.GoldenEgg;
  * @author Khushi R
  */
 public class GoldenBeetle extends SelectableBehaviourCreature implements ActorFactory {
+    /**
+     * Default constructor for Golden Beetle.
+     * Creates a Golden Beetle with priority-based behavior selection.
+     */
     public GoldenBeetle() {
         this(new SelectPriorityBehaviour());
     }
