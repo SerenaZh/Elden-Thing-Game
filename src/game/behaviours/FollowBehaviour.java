@@ -32,6 +32,12 @@ public class FollowBehaviour implements Behaviour {
         this.target = subject;
     }
 
+    /**
+     * Gets the actions that the actor can do
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return a list of actions that the actor can execute
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         if(!map.contains(target) || !map.contains(actor))

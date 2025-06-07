@@ -3,23 +3,17 @@ package game.ground;
 import edu.monash.fit2099.engine.positions.Ground;
 import game.Capabilities;
 
+/**
+ * A hole
+ *
+ * @author Serena Zhou
+ */
 public class Hole extends Ground {
+    /**
+     * Constructor
+     */
     public Hole() {
         super('O', "Hole");
         this.addCapability(Capabilities.TILLED);
     }
-
-//    @Override
-//    public ActionList allowableActions(Actor actor, Location location, String direction) {
-//        ActionList actions = new ActionList();
-//
-//        if (actor.hasCapability(Capabilities.SHOVELABLE)) {
-//            if (location.containsAnActor()) {
-//                if (location.getActor() == actor) {
-//                    actions.add(new ShovelAction());
-//                }
-//            }
-//        }
-//        return actions;
-//    }
 }

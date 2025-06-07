@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Capabilities;
 import game.actions.farming.PlantAction;
-import game.ground.Plant;
+import game.ground.plants.Plant;
 
 /**
  * Seed Item that can be carried by the Player

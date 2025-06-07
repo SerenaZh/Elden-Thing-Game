@@ -21,6 +21,13 @@ public class Soil extends Ground {
         this.addCapability(Capabilities.PLANTABLE);
     }
 
+    /**
+     * The allowable actions that can be done to this soil
+     * @param actor     the Actor acting
+     * @param location  the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return actions that can be done
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
