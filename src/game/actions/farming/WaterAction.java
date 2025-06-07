@@ -34,6 +34,7 @@ public class WaterAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         thirstyPlant.water();
+        actor.addBalance(100);
         return actor.toString() + " has watered the " + thirstyPlant.toString();
     }
 
