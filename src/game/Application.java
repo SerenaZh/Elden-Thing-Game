@@ -75,7 +75,7 @@ public class Application {
         player.addItemToInventory(new Seed(new Bloodrose()));
 
         player.addBalance(10000);
-        world.addPlayer(player, gameMap.at(23, 13)); // 23 13
+        world.addPlayer(player, gameMap.at(23, 13));
 
         // game setup
         gameMap.at(24, 11).addItem(new Talisman());
