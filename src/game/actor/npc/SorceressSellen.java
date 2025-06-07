@@ -11,7 +11,6 @@ import game.actions.BuyAction;
 import game.actions.ListenAction;
 import game.actor.Ability;
 import game.behaviours.MonologueCapable;
-import game.behaviours.SelectPriorityBehaviour;
 import game.items.Buyable;
 import game.items.purchaseeffect.AttributeValueChange;
 import game.items.purchaseeffect.MaxAttributeChange;
@@ -33,7 +32,7 @@ public class SorceressSellen extends NonPlayableActor implements MonologueCapabl
      * Constructor for SorceressSellen
      */
     public SorceressSellen(){
-        super("Sorceress Sellen",'s', 150, new SelectPriorityBehaviour());
+        super("Sorceress Sellen",'s', 150);
         getBuyables();
     }
 

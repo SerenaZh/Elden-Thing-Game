@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.AttackAction;
 import game.actor.Status;
-import game.behaviours.SelectBehaviour;
 import game.behaviours.WanderBehaviour;
 
 import java.util.Map;
@@ -36,8 +35,6 @@ public abstract class NonPlayableActor extends Actor {
      */
     public static final int wanderRank=999;
 
-    private final SelectBehaviour behaviourSelector;
-
     /**
      * The constructor of the NonPlayableActor class.
      *
@@ -45,10 +42,9 @@ public abstract class NonPlayableActor extends Actor {
      * @param displayChar the character that will represent the NonPlayableActor in the display
      * @param hitPoints   the NonPlayableActor's starting hit points
      */
-    public NonPlayableActor(String name, char displayChar, int hitPoints, SelectBehaviour select) {
+    public NonPlayableActor(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(wanderRank, new WanderBehaviour());
-        this.behaviourSelector = select;
     }
 
     /**
@@ -73,10 +69,12 @@ public abstract class NonPlayableActor extends Actor {
         if (!this.isConscious()) {
             this.unconscious(map);
         }
-            Action action = behaviourSelector.selectBehaviour(behaviours, this, map);
-            if (action != null)
+        for (Behaviour behaviour : behaviours.values()) {
+            Action action = behaviour.getAction(this, map);
+            if (action != null) {
                 return action;
-
+            }
+        }
             return new DoNothingAction();
         }
 

@@ -30,7 +30,7 @@ public class MerchantKale extends NonPlayableActor implements MonologueCapable {
      * Constructor for Merchant Kale
      */
     public MerchantKale(){
-        super("Merchant Kale", 'k', 200, new SelectPriorityBehaviour());
+        super("Merchant Kale", 'k', 200);
         getBuyables();
     }
 

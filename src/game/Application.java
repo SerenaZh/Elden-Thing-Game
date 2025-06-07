@@ -12,10 +12,10 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actor.npc.*;
 import game.actor.Player;
 import game.behaviours.SelectPriorityBehaviour;
+import game.behaviours.SelectRandomBehaviour;
 import game.ground.*;
 import game.items.Seed;
 import game.items.Talisman;
-import game.items.weapons.Broadsword;
 
 /**
  * <h1>Application</h1>
@@ -75,21 +75,22 @@ public class Application {
                 "....xxx.....xxxxx",
                 "....xxxx...xxxxxx");
 
-        GameMap limveld = new GameMap("Limeveld", groundFactory, limveldMap);
+        GameMap limveld = new GameMap("Limveld", groundFactory, limveldMap);
         world.addGameMap(limveld);
 
+        // Setup teleportation circle
         gameMap.at(10, 10).setGround(new TeleportationCircle(limveld, 1, 1));
         limveld.at(1, 1).setGround(new TeleportationCircle(gameMap, 10, 10));
 
-        // test
+        //test
         limveld.at(2, 2).addActor(new SpiritGoat(new SelectPriorityBehaviour()));
-        limveld.at(3, 3).addActor(new SpiritGoat(new SelectPriorityBehaviour()));
+        limveld.at(3, 3).addActor(new SpiritGoat(new SelectRandomBehaviour()));
 
         limveld.at(4, 4).addActor(new OmenSheep(new SelectPriorityBehaviour()));
-        limveld.at(5, 5).addActor(new OmenSheep(new SelectPriorityBehaviour()));
+        limveld.at(5, 5).addActor(new OmenSheep(new SelectRandomBehaviour()));
 
         limveld.at(6, 6).addActor(new GoldenBeetle(new SelectPriorityBehaviour()));
-        limveld.at(7, 7).addActor(new GoldenBeetle(new SelectPriorityBehaviour()));
+        limveld.at(7, 7).addActor(new GoldenBeetle(new SelectRandomBehaviour()));
 
         // BEHOLD, ELDEN THING!
         for (String line : FancyMessage.TITLE.split("\n")) {

@@ -4,6 +4,9 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
+/**
+ * Action that teleports an actor to a different location/map
+ */
 public class TeleportAction extends Action {
     private final GameMap destinationMap;
     private final int destX;
@@ -14,12 +17,14 @@ public class TeleportAction extends Action {
         this.destX = destX;
         this.destY = destY;
     }
+
     @Override
     public String execute(Actor actor, GameMap map) {
         map.removeActor(actor);
         destinationMap.at(destX, destY).addActor(actor);
         return actor + " teleports to a new region!";
     }
+
     @Override
     public String menuDescription(Actor actor) {
         return actor + " enters the teleportation circle";

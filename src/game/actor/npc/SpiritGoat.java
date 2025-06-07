@@ -21,8 +21,9 @@ import java.util.List;
  * Class representing the Spirit Goat that roams the land
  * Spirit Goat is a NonPlayableActor
  * @author Serena Zhou & Sandeesa R
+ * Modified by Khushi R
  */
-public class SpiritGoat extends NonPlayableActor implements Curable {
+public class SpiritGoat extends SelectableBehaviourCreature implements Curable, ActorFactory {
     /**
      * Rot that effects the actor
      */
@@ -108,5 +109,10 @@ public class SpiritGoat extends NonPlayableActor implements Curable {
                 break; // Only spawn one offspring
             }
         }
+    }
+
+    @Override
+    public Actor createNewInstance() {
+        return new SpiritGoat(this.getBehaviourSelector());
     }
 }

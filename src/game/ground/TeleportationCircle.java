@@ -8,8 +8,8 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.TeleportAction;
 
 public class TeleportationCircle extends Ground {
-    private GameMap destinationMap;
-    private int destX, destY;
+    private final GameMap destinationMap;
+    private final int destX, destY;
 
     public TeleportationCircle(GameMap destinationMap, int x, int y) {
         super('A', "Teleportation Circle");
@@ -17,6 +17,7 @@ public class TeleportationCircle extends Ground {
         this.destX = x;
         this.destY = y;
     }
+
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
@@ -24,3 +25,4 @@ public class TeleportationCircle extends Ground {
         return actions;
     }
 }
+

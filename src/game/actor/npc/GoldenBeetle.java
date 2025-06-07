@@ -15,7 +15,7 @@ import game.items.GoldenEgg;
  * Class representing the Golden Beetle NPC
  * @author Khushi R
  */
-public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
+public class GoldenBeetle extends SelectableBehaviourCreature implements ActorFactory {
     public GoldenBeetle() {
         this(new SelectPriorityBehaviour());
     }
@@ -33,7 +33,7 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
      */
     @Override
     public Actor createNewInstance() {
-        return new GoldenBeetle();
+        return new GoldenBeetle(this.getBehaviourSelector());
     }
 
     /**
