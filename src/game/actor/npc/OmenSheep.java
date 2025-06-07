@@ -11,6 +11,7 @@ import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
 import game.behaviours.LayEggBehaviourForSheep;
+import game.behaviours.SelectPriorityBehaviour;
 import game.ground.Inheritree;
 
 import java.util.List;
@@ -26,11 +27,14 @@ public class OmenSheep extends NonPlayableActor implements Curable, ActorFactory
      */
     private StatusEffect rotEffect = new RotEffect(15);
 
+    public OmenSheep() {
+        this(new SelectPriorityBehaviour());
+    }
     /**
      * Constructor for Omen Sheep
      */
-    public OmenSheep() {
-        super("Omen Sheep", 'm', 75 );
+    public OmenSheep(SelectPriorityBehaviour selector) {
+        super("Omen Sheep", 'm', 75, selector);
         this.addStatusEffect(rotEffect);
         this.addCapability(Capabilities.CURABLE);
         this.behaviours.put(7, new LayEggBehaviourForSheep());

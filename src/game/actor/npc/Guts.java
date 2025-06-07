@@ -8,6 +8,7 @@ import game.BareFist;
 import game.actions.ListenAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.MonologueCapable;
+import game.behaviours.SelectPriorityBehaviour;
 import game.behaviours.WanderBehaviour;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Guts extends NonPlayableActor implements MonologueCapable {
     private final Random rand = new Random();
 
     public Guts() {
-        super("Guts", 'g', 500);
+        super("Guts", 'g', 500, new SelectPriorityBehaviour());
         this.setIntrinsicWeapon(new BareFist());
         this.behaviours.put(1, new AttackBehaviour());
         this.behaviours.put(999, new WanderBehaviour());

@@ -11,6 +11,8 @@ import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
+import game.behaviours.SelectBehaviour;
+import game.behaviours.SelectPriorityBehaviour;
 import game.utilities.BlessedUtils;
 
 import java.util.List;
@@ -26,12 +28,15 @@ public class SpiritGoat extends NonPlayableActor implements Curable {
      */
     private RotEffect rotEffect = new RotEffect(10);
 
+    public SpiritGoat() {
+        this(new SelectPriorityBehaviour());
+    }
     /**
      * Constructor for the Spirit Goat
      */
-    public SpiritGoat() {
-        super("Spirit Goat", 'y', 50 );
-        this.addStatusEffect(rotEffect);
+    public SpiritGoat(SelectBehaviour selector) {
+        super("Spirit Goat", 'y', 50, selector);
+        this.addStatusEffect(new RotEffect(10));
         this.addCapability(Capabilities.CURABLE);
     }
 

@@ -7,6 +7,8 @@ import game.actions.ConsumeAction;
 import game.actor.Status;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.LayEggBehaviour;
+import game.behaviours.SelectBehaviour;
+import game.behaviours.SelectPriorityBehaviour;
 import game.items.GoldenEgg;
 
 /**
@@ -14,11 +16,14 @@ import game.items.GoldenEgg;
  * @author Khushi R
  */
 public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
+    public GoldenBeetle() {
+        this(new SelectPriorityBehaviour());
+    }
     /**
      * Constructor for GoldenBeetle
      */
-    public GoldenBeetle() {
-        super("Golden Beetle", 'b', 25);
+    public GoldenBeetle(SelectBehaviour selector) {
+        super("Golden Beetle", 'b', 25, selector);
         this.behaviours.put(1, new LayEggBehaviour(new GoldenEgg(this)));
     }
 
