@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
  * This intrinsic weapon deals 25 damage points with a 50% chance
  * to hit the target.
  * @author Adrian Kristanto
- * Modified by Serena Zhou
+ * Modified by Serena Zhou, Mohammed A
  */
 public class BareFist extends IntrinsicWeapon {
     /**
