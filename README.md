@@ -14,7 +14,7 @@ Contributions log: https://docs.google.com/spreadsheets/d/1qlEmjwCmgAbjDdFvwbJjh
 
 Handover Videos:
 
-Khushi Rajpurohit - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
+Khushi Rajpurohit - https://drive.google.com/file/d/15arpZg7GfnLDCtajjbaDY3bdViHnn4FI/view?usp=sharing
 
 Sandeesa Rajapaksa - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
 
