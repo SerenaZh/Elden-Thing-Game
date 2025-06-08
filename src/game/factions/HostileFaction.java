@@ -6,7 +6,7 @@ import game.items.weapons.WeaponItem;
 
 /**
  * Class representing a Hostile Faction
- * Author: Aryan M and Sandeee R
+ * Author: Aryan M and Sandeesa R
  **/
 public class HostileFaction extends Faction {
     /**

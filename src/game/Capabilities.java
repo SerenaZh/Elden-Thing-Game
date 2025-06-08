@@ -15,7 +15,6 @@ public enum Capabilities {
     SHOVELABLE,
     CONSUMABLE,
     MERCHANT,
-    ENEMY,
     CREATURE,
     HOSTILE,
     PLAYER,
