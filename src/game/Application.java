@@ -137,7 +137,7 @@ public class Application {
         gameMap.at(23,14).addActor(beetle);
 
         BedOfChaos bedOfChaos = new BedOfChaos();
-        gameMap.at(30, 5).addActor(bedOfChaos);
+        limveld.at(8, 6).addActor(bedOfChaos);
 
         world.run();
     }
