@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actor.BedOfChaos;
 import game.actor.npc.*;
 import game.actor.Player;
 import game.behaviours.SelectPriorityBehaviour;
@@ -135,6 +136,8 @@ public class Application {
         GoldenBeetle beetle = new GoldenBeetle();
         gameMap.at(23,14).addActor(beetle);
 
+        BedOfChaos bedOfChaos = new BedOfChaos();
+        gameMap.at(30, 5).addActor(bedOfChaos);
 
         world.run();
     }
