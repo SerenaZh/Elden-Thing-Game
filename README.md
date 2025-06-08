@@ -71,7 +71,7 @@ Alternatively you would need to use an instance of which breaks the Open/Closed 
 Substitution principle.
 Req3 - Approved by Jordan May 28th 16:06
 
-Creative REQ4
+Creative REQ4 Video: https://drive.google.com/file/d/1utVfyzKH_cTS5TUX2pFSq7sGwOefWvuf/view?usp=sharing
 Affection level/Factions system.
 1) There will be an Affectionable interface with Actions (which act on NPCs which are part of a faction).
 - For instance, the farmer can give items to the NPCs, which will increase their affection level towards the farmer.
