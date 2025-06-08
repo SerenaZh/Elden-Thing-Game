@@ -1,5 +1,4 @@
 package game.factions;
-
 import game.Capabilities;
 import game.actor.npc.NonPlayableActor;
 import game.items.weapons.WeaponItem;
