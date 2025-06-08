@@ -64,14 +64,11 @@ public class PlantAction extends Action implements Affectionable {
         return actor.toString() + " plants the " + seed.toString();
     }
 
-    private void creatureAndHostileStandingBoost(){
-        FactionStandingManager.allFactions.get(Capabilities.HOSTILE).increaseStanding(1);
-        FactionStandingManager.allFactions.get(Capabilities.CREATURE).increaseStanding(1);
-    }
 
     @Override
     public void affectFaction(Actor actor) {
-        this.creatureAndHostileStandingBoost();
+        FactionStandingManager.allFactions.get(Capabilities.HOSTILE).increaseStanding(1);
+        FactionStandingManager.allFactions.get(Capabilities.CREATURE).increaseStanding(1);
     }
 
 }
