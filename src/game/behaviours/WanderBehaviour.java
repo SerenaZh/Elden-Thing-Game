@@ -32,6 +32,12 @@ public class WanderBehaviour implements Behaviour {
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {
+        Location here = map.locationOf(actor);
+
+        if (here == null) {
+            return null;  // Prevents crash when actor is not on the map
+        }
+
         ArrayList<Action> actions = new ArrayList<>();
 
         for (Exit exit : map.locationOf(actor).getExits()) {
