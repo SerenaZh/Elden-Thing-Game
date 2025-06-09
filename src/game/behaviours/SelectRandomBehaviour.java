@@ -36,7 +36,7 @@ public class SelectRandomBehaviour implements SelectBehaviour {
 
     /**
      * Randomly selects a behaviour to execute.
-     * Converts the behaviours map to a list, randomly selects one behaviour from the available
+     * Converts the behaviour map to a list, randomly selects one behaviour from the available
      * options, and attempts to get an action from that behaviour. If the chosen behaviour
      * cannot produce a valid action, returns null (creature does nothing).
      *

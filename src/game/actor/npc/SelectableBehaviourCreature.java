@@ -76,7 +76,7 @@ public abstract class SelectableBehaviourCreature extends NonPlayableActor {
     /**
      * Returns the behaviour selection strategy used by this creature.
      * This method is protected to allow subclasses to access the selector if needed
-     * for specialized behaviour or debugging purposes.
+     * for specialised behaviour or debugging purposes.
      *
      * @return the SelectBehaviour strategy used by this creature
      */

@@ -11,6 +11,22 @@
 ```
 Contributions log: https://docs.google.com/spreadsheets/d/1qlEmjwCmgAbjDdFvwbJjhd0uasW1hyAIcpXi7bx7z2s/edit?usp=sharing
 
+
+Handover Videos:
+
+Khushi Rajpurohit - https://drive.google.com/file/d/15arpZg7GfnLDCtajjbaDY3bdViHnn4FI/view?usp=sharing
+
+Sandeesa Rajapaksa - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
+
+Mohammed Osamah A Almaharif - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
+
+Serena Zhou - https://drive.google.com/drive/folders/11Vqf97bm0pbGr-6IP_V0TurqJMSgJkqW?usp=sharing
+
+Aryan Majidi Mobaraki - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
+
+
+Creative requirements Plan:
+
 Creative REQ 3
 
 New Farming System

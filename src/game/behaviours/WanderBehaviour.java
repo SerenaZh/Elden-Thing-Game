@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by: the FIT2099 Teaching Team
  * @author Riordan D. Alfredo
- * Modified by: Serena Zhou
+ * Modified by: Serena Zhou, Mohammed A
  *
  */
 public class WanderBehaviour implements Behaviour {
@@ -32,6 +32,12 @@ public class WanderBehaviour implements Behaviour {
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {
+        Location here = map.locationOf(actor);
+
+        if (here == null) {
+            return null;  // Prevents crash when actor is not on the map
+        }
+
         ArrayList<Action> actions = new ArrayList<>();
 
         for (Exit exit : map.locationOf(actor).getExits()) {
