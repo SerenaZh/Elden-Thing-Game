@@ -22,7 +22,8 @@ Mohammed Osamah A Almaharif - Link to Zoom/Google Drive/Panopto/unlisted YouTube
 
 Serena Zhou - https://drive.google.com/drive/folders/11Vqf97bm0pbGr-6IP_V0TurqJMSgJkqW?usp=sharing
 
-Aryan Majidi Mobaraki - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
+Aryan Majidi Mobaraki - https://drive.google.com/file/d/1utVfyzKH_cTS5TUX2pFSq7sGwOefWvuf/view?usp=sharing
+
 
 
 Creative requirements Plan:
