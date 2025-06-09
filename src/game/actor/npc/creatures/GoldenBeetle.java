@@ -1,26 +1,33 @@
-package game.actor.npc.creatures;
+package game.actor.npc;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 import game.actor.Status;
-import game.actor.npc.ActorFactory;
-import game.actor.npc.NonPlayableActor;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.LayEggBehaviour;
-import game.items.egg.GoldenEgg;
+import game.behaviours.SelectBehaviour;
+import game.behaviours.SelectPriorityBehaviour;
+import game.items.GoldenEgg;
 
 /**
  * Class representing the Golden Beetle NPC
  * @author Khushi R
  */
-public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
+public class GoldenBeetle extends SelectableBehaviourCreature implements ActorFactory {
+    /**
+     * Default constructor for Golden Beetle.
+     * Creates a Golden Beetle with priority-based behavior selection.
+     */
+    public GoldenBeetle() {
+        this(new SelectPriorityBehaviour());
+    }
     /**
      * Constructor for GoldenBeetle
      */
-    public GoldenBeetle() {
-        super("Golden Beetle", 'b', 25);
+    public GoldenBeetle(SelectBehaviour selector) {
+        super("Golden Beetle", 'b', 25, selector);
         this.behaviours.put(1, new LayEggBehaviour(new GoldenEgg(this)));
     }
 
@@ -30,7 +37,7 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
      */
     @Override
     public Actor createNewInstance() {
-        return new GoldenBeetle();
+        return new GoldenBeetle(this.getBehaviourSelector());
     }
 
     /**
@@ -46,8 +53,8 @@ public class GoldenBeetle extends NonPlayableActor implements ActorFactory {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = super.allowableActions(otherActor, direction, map);
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            this.behaviours.put(999, new FollowBehaviour(otherActor));
             actions.add(new ConsumeAction(this, "+15 HP, +1000 Runes"));
+            this.behaviours.put(999, new FollowBehaviour(otherActor));
         }
         return actions;
     }

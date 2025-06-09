@@ -11,6 +11,7 @@ import game.Capabilities;
 import game.actions.BuyAction;
 import game.actions.ListenAction;
 import game.behaviours.MonologueCapable;
+import game.behaviours.SelectPriorityBehaviour;
 import game.items.Buyable;
 import game.items.purchaseeffect.AttributeValueChange;
 import game.items.purchaseeffect.MaxAttributeChange;

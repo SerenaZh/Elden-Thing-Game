@@ -1,5 +1,5 @@
-package game.behaviours;
 
+package game.behaviours;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.positions.Exit;
@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Behaviour;
-
 /**
  * A class that figures out a MoveAction that will move the actor one step
  * closer to a target Actor.
@@ -20,9 +19,7 @@ import edu.monash.fit2099.engine.actors.Behaviour;
  *
  */
 public class FollowBehaviour implements Behaviour {
-
     private final Actor target;
-
     /**
      * Constructor.
      *
@@ -31,21 +28,12 @@ public class FollowBehaviour implements Behaviour {
     public FollowBehaviour(Actor subject) {
         this.target = subject;
     }
-
-    /**
-     * Gets the actions that the actor can do
-     * @param actor the Actor acting
-     * @param map the GameMap containing the Actor
-     * @return a list of actions that the actor can execute
-     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         if(!map.contains(target) || !map.contains(actor))
             return null;
-
         Location here = map.locationOf(actor);
         Location there = map.locationOf(target);
-
         int currentDistance = distance(here, there);
         for (Exit exit : here.getExits()) {
             Location destination = exit.getDestination();
@@ -56,10 +44,8 @@ public class FollowBehaviour implements Behaviour {
                 }
             }
         }
-
         return null;
     }
-
     /**
      * Compute the Manhattan distance between two locations.
      *
@@ -71,4 +57,3 @@ public class FollowBehaviour implements Behaviour {
         return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
     }
 }
-

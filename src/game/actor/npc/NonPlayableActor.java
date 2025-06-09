@@ -2,6 +2,7 @@ package game.actor.npc;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
@@ -20,6 +21,7 @@ import java.util.spi.CalendarDataProvider;
  * A NPC class for any NPCs that are in the game, who cannot be played by the user
  *
  * @authors Serena Zhou & Aryan M
+ * Modified by Khushi R
  */
 public abstract class NonPlayableActor extends Actor {
     /**
@@ -70,16 +72,13 @@ public abstract class NonPlayableActor extends Actor {
             this.unconscious(map);
         }
         for (Behaviour behaviour : behaviours.values()) {
-            if (!map.contains(this)) {
-                break;
-            }
             Action action = behaviour.getAction(this, map);
-            if (action != null)
+            if (action != null) {
                 return action;
+            }
         }
-
-        return actions.get(rand.nextInt(actions.size()));
-    }
+            return new DoNothingAction();
+        }
 
     /**
      * The allowable actions that a NonPlayableActor can be performed on

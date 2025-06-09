@@ -16,4 +16,17 @@ public class BareFist extends IntrinsicWeapon {
     public BareFist() {
         super(25, "punches", 50);
     }
+
+
+    /**
+     * Custom constructor for configurable damage, verb, and hit rate (used by Bed of Chaos).
+     *
+     * @param damage the amount of damage
+     * @param verb the attack description
+     * @param hitRate the hit chance
+     */
+    public BareFist(int damage, String verb, int hitRate) {
+        super(damage, verb, hitRate);
+    }
 }
+

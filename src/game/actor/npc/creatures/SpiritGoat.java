@@ -1,4 +1,4 @@
-package game.actor.npc.creatures;
+package game.actor.npc;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -11,7 +11,8 @@ import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
-import game.actor.npc.NonPlayableActor;
+import game.behaviours.SelectBehaviour;
+import game.behaviours.SelectPriorityBehaviour;
 import game.utilities.BlessedUtils;
 
 import java.util.List;
@@ -20,19 +21,32 @@ import java.util.List;
  * Class representing the Spirit Goat that roams the land
  * Spirit Goat is a NonPlayableActor
  * @author Serena Zhou & Sandeesa R
+ * Modified by Khushi R
  */
-public class SpiritGoat extends NonPlayableActor implements Curable {
+public class SpiritGoat extends SelectableBehaviourCreature implements Curable, ActorFactory {
     /**
      * Rot that effects the actor
      */
     private RotEffect rotEffect = new RotEffect(10);
 
     /**
-     * Constructor for the Spirit Goat
+     * Default constructor for Spirit Goat.
+     * Creates a Spirit Goat with priority-based behavior selection.
      */
     public SpiritGoat() {
-        super("Spirit Goat", 'y', 50 );
-        this.addStatusEffect(rotEffect);
+        this(new SelectPriorityBehaviour());
+    }
+
+    /**
+     * Constructor for Spirit Goat with configurable behavior selection.
+     * Creates a Spirit Goat with the specified behavior selection strategy, rot effect,
+     * and curable capability.
+     *
+     * @param selector the behavior selection strategy to use for this Spirit Goat
+     */
+    public SpiritGoat(SelectBehaviour selector) {
+        super("Spirit Goat", 'y', 50, selector);
+        this.addStatusEffect(new RotEffect(10));
         this.addCapability(Capabilities.CURABLE);
     }
 
@@ -104,5 +118,17 @@ public class SpiritGoat extends NonPlayableActor implements Curable {
                 break; // Only spawn one offspring
             }
         }
+    }
+
+    /**
+     * Creates a new instance of Spirit Goat with the same behavior selection strategy.
+     * This method is used by the ActorFactory interface to create consistent offspring
+     * that inherit the parent's behavior selection pattern.
+     *
+     * @return a new Spirit Goat instance with the same behavior selector as this one
+     */
+    @Override
+    public Actor createNewInstance() {
+        return new SpiritGoat(this.getBehaviourSelector());
     }
 }

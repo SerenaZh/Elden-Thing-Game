@@ -7,42 +7,41 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actor.BedOfChaos;
+import game.actor.npc.*;
 import game.actor.Player;
-import game.actor.npc.SorceressSellen;
-import game.actor.npc.creatures.Caterpillar;
-import game.factions.FactionStandingManager;
+import game.behaviours.SelectPriorityBehaviour;
+import game.behaviours.SelectRandomBehaviour;
 import game.ground.*;
-import game.ground.plants.Bloodrose;
-import game.ground.plants.Daisy;
-import game.ground.plants.Inheritree;
-import game.ground.plants.Lilac;
 import game.items.Seed;
-import game.items.Shovel;
-import game.items.WateringCan;
+import game.items.Talisman;
 
 /**
  * <h1>Application</h1>
  * The main class to set up and run the game.
  * <p>
- *    Where the main application is initalised to run
+ *    Where the main application is initialized to run
  * </p>
  * @author Adrian Kristanto
  * @version 2.0
  * @since 07/04/2025
- * Modified by Serena Zhou
+ * Modified by Serena Zhou, Khushi R
  */
 public class Application {
     /**
-     * Main method that can run the program
+     * Main method that initializes and runs the game.
+     * Sets up the game world, creates maps, places actors and items,
+     * and starts the game loop.
+     *
      * @param args
      */
     public static void main(String[] args) {
-
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Blight(),
                 new Wall(), new Floor(), new Soil());
 
+        //create the main "Valley of the Inheritree" game map
         List<String> map = Arrays.asList(
                 "xxxx...xxxxxxxxxxxxxxxxxxxxxxx........xx",
                 "xxx.....xxxxxxx..xxxxxxxxxxxxx.........x",
@@ -63,6 +62,39 @@ public class Application {
         GameMap gameMap = new GameMap("Valley of the Inheritree", groundFactory, map);
         world.addGameMap(gameMap);
 
+        //create the "Limveld" game map
+        List<String> limveldMap = Arrays.asList(
+                ".............xxxx",
+                "..............xxx",
+                "................x",
+                ".................",
+                "................x",
+                "...............xx",
+                "..............xxx",
+                "..............xxx",
+                "..............xxx",
+                ".............xxxx",
+                ".............xxxx",
+                "....xxx.....xxxxx",
+                "....xxxx...xxxxxx");
+
+        GameMap limveld = new GameMap("Limveld", groundFactory, limveldMap);
+        world.addGameMap(limveld);
+
+        // setup teleportation circle on the game map
+        gameMap.at(10, 10).setGround(new TeleportationCircle(limveld, 1, 1));
+        limveld.at(1, 1).setGround(new TeleportationCircle(gameMap, 10, 10));
+
+        //add test actors to the Limveld map for testing purposes
+        limveld.at(2, 2).addActor(new SpiritGoat(new SelectPriorityBehaviour()));
+        limveld.at(3, 3).addActor(new SpiritGoat(new SelectRandomBehaviour()));
+
+        limveld.at(4, 4).addActor(new OmenSheep(new SelectPriorityBehaviour()));
+        limveld.at(5, 5).addActor(new OmenSheep(new SelectRandomBehaviour()));
+
+        limveld.at(6, 6).addActor(new GoldenBeetle(new SelectPriorityBehaviour()));
+        limveld.at(7, 7).addActor(new GoldenBeetle(new SelectRandomBehaviour()));
+
         // BEHOLD, ELDEN THING!
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
@@ -76,46 +108,36 @@ public class Application {
         Player player = new Player("Farmer", '@', 100, 200);
         player.addItemToInventory(new Seed(new Inheritree()));
         player.addItemToInventory(new Seed(new Bloodrose()));
-        player.addItemToInventory(new Seed(new Lilac()));
-        player.addItemToInventory(new Seed(new Daisy()));
-//        player.addItemToInventory(new Talisman());
 
         player.addBalance(10000);
         world.addPlayer(player, gameMap.at(23, 13));
 
         // game setup
-        gameMap.at(24, 11).addItem(new Shovel());
-        gameMap.at(24, 10).addItem(new WateringCan());
+        gameMap.at(24, 11).addItem(new Talisman());
 
-        //gameMap.at(24, 13).addActor(new Caterpillar());
-        gameMap.at(24, 14).setGround(new Daisy());
-        gameMap.at(23, 14).setGround(new Lilac());
-        gameMap.at(25, 13).setGround(new Daisy());
-        gameMap.at(25, 14).setGround(new Lilac());
+        OmenSheep sheep = new OmenSheep();
+        gameMap.at(16,6).addActor(sheep);
 
-        //Initialising Factions and manager
-        new FactionStandingManager();
-//        OmenSheep sheep = new OmenSheep();
-//        gameMap.at(16,6).addActor(sheep);
-//
         SorceressSellen sellen = new SorceressSellen();
         gameMap.at(22, 10).addActor(sellen);
-//
-//        MerchantKale kale = new MerchantKale();
-//        gameMap.at(24,10).addActor(kale);
-//
-//        SpiritGoat goat3 =  new SpiritGoat();
-//        gameMap.at(24,13).addActor(goat3);
-//
-//        OmenSheep sheep2 = new OmenSheep();
-//        gameMap.at(22,13).addActor(sheep2);
-//
-//        OmenSheep sheep4 = new OmenSheep();
-//        gameMap.at(21,8).addActor(sheep4);
-//
-//        GoldenBeetle beetle = new GoldenBeetle();
-//        gameMap.at(23,14).addActor(beetle);
 
+        MerchantKale kale = new MerchantKale();
+        gameMap.at(24,10).addActor(kale);
+
+        SpiritGoat goat3 =  new SpiritGoat();
+        gameMap.at(24,13).addActor(goat3);
+
+        OmenSheep sheep2 = new OmenSheep();
+        gameMap.at(22,13).addActor(sheep2);
+
+        OmenSheep sheep4 = new OmenSheep();
+        gameMap.at(21,8).addActor(sheep4);
+
+        GoldenBeetle beetle = new GoldenBeetle();
+        gameMap.at(23,14).addActor(beetle);
+
+        BedOfChaos bedOfChaos = new BedOfChaos();
+        gameMap.at(30, 5).addActor(bedOfChaos);
 
         world.run();
     }
