@@ -15,6 +15,7 @@ import game.actor.npc.OmenSheep;
 import game.actor.npc.SpiritGoat;
 import game.behaviours.SelectPriorityBehaviour;
 import game.behaviours.SelectRandomBehaviour;
+import game.factions.FactionStandingManager;
 import game.ground.*;
 import game.ground.plants.Bloodrose;
 import game.ground.plants.Inheritree;
@@ -119,6 +120,7 @@ public class Application {
 
         // game setup
         gameMap.at(24, 11).addItem(new Talisman());
+        new FactionStandingManager();
 
         OmenSheep sheep = new OmenSheep();
         gameMap.at(16,6).addActor(sheep);
