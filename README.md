@@ -18,7 +18,7 @@ Khushi Rajpurohit - https://drive.google.com/file/d/15arpZg7GfnLDCtajjbaDY3bdViH
 
 Sandeesa Rajapaksa - https://drive.google.com/file/d/1vpaf4vNWbxGXWP5zDw9-WuZiERCpqtHY/view?usp=share_link
 
-Mohammed Osamah A Almaharif - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
+Mohammed Osamah A Almaharif - https://drive.google.com/file/d/16SF8UG-agTiL33q9yN5LBEpnWw0Gxd2J/view?usp=sharing
 
 Serena Zhou - https://drive.google.com/drive/folders/11Vqf97bm0pbGr-6IP_V0TurqJMSgJkqW?usp=sharing
 
