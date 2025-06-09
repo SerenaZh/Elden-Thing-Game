@@ -16,7 +16,7 @@ Handover Videos:
 
 Khushi Rajpurohit - https://drive.google.com/file/d/15arpZg7GfnLDCtajjbaDY3bdViHnn4FI/view?usp=sharing
 
-Sandeesa Rajapaksa - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
+Sandeesa Rajapaksa - https://drive.google.com/file/d/1vpaf4vNWbxGXWP5zDw9-WuZiERCpqtHY/view?usp=share_link
 
 Mohammed Osamah A Almaharif - Link to Zoom/Google Drive/Panopto/unlisted YouTube video
 
