@@ -32,7 +32,7 @@ public abstract class Faction {
      **/
     public Faction(Capabilities factionID) {
         this.factionID = factionID;
-        this.standing=5;
+        this.standing=0;
     }
 
     /**

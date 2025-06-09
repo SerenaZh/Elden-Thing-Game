@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actor.Player;
+import game.actor.npc.SorceressSellen;
 import game.actor.npc.creatures.Caterpillar;
 import game.factions.FactionStandingManager;
 import game.ground.*;
@@ -97,8 +98,8 @@ public class Application {
 //        OmenSheep sheep = new OmenSheep();
 //        gameMap.at(16,6).addActor(sheep);
 //
-//        SorceressSellen sellen = new SorceressSellen();
-//        gameMap.at(22, 10).addActor(sellen);
+        SorceressSellen sellen = new SorceressSellen();
+        gameMap.at(22, 10).addActor(sellen);
 //
 //        MerchantKale kale = new MerchantKale();
 //        gameMap.at(24,10).addActor(kale);
