@@ -10,9 +10,14 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actor.BedOfChaos;
 import game.actor.npc.*;
 import game.actor.Player;
+import game.actor.npc.GoldenBeetle;
+import game.actor.npc.OmenSheep;
+import game.actor.npc.SpiritGoat;
 import game.behaviours.SelectPriorityBehaviour;
 import game.behaviours.SelectRandomBehaviour;
 import game.ground.*;
+import game.ground.plants.Bloodrose;
+import game.ground.plants.Inheritree;
 import game.items.Seed;
 import game.items.Talisman;
 
