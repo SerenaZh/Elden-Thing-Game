@@ -1,19 +1,21 @@
-package game.actor.npc;
+package game.actor.npc.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 import game.actor.Status;
+import game.actor.npc.ActorFactory;
+import game.actor.npc.SelectableBehaviourCreature;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.LayEggBehaviour;
 import game.behaviours.SelectBehaviour;
 import game.behaviours.SelectPriorityBehaviour;
-import game.items.GoldenEgg;
+import game.items.egg.GoldenEgg;
 
 /**
  * Class representing the Golden Beetle NPC
- * @author Khushi R
+ * @author Khushi Rajpurohit
  */
 public class GoldenBeetle extends SelectableBehaviourCreature implements ActorFactory {
     /**

@@ -1,4 +1,4 @@
-package game.actor.npc;
+package game.actor.npc.creatures;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -11,6 +11,8 @@ import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
+import game.actor.npc.ActorFactory;
+import game.actor.npc.SelectableBehaviourCreature;
 import game.behaviours.SelectBehaviour;
 import game.behaviours.SelectPriorityBehaviour;
 import game.utilities.BlessedUtils;

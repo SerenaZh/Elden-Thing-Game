@@ -1,4 +1,4 @@
-package game.actor.npc;
+package game.actor.npc.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -10,10 +10,12 @@ import game.Capabilities;
 import game.Curable;
 import game.actions.CureAction;
 import game.actor.RotEffect;
+import game.actor.npc.ActorFactory;
+import game.actor.npc.SelectableBehaviourCreature;
 import game.behaviours.LayEggBehaviourForSheep;
 import game.behaviours.SelectBehaviour;
 import game.behaviours.SelectPriorityBehaviour;
-import game.ground.Inheritree;
+import game.ground.plants.Inheritree;
 
 import java.util.List;
 
