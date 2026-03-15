@@ -1,4 +1,4 @@
-# FIT2099 Assignment (Semester 1, 2025)
+Elden Thing game
 
 ```
 `7MM"""YMM  `7MMF'      `7MM"""Yb. `7MM"""YMM  `7MN.   `7MF'    MMP""MM""YMM `7MMF'  `7MMF'`7MMF'`7MN.   `7MF' .g8"""bgd  
@@ -9,26 +9,10 @@
   MM     ,M   MM     ,M   MM    ,dP' MM     ,M   M     YMM           MM        MM      MM    MM    M     YMM `Mb.     MM  
 .JMMmmmmMMM .JMMmmmmMMM .JMMmmmdP' .JMMmmmmMMM .JML.    YM         .JMML.    .JMML.  .JMML..JMML..JML.    YM   `"bmmmdPY  
 ```
-Contributions log: https://docs.google.com/spreadsheets/d/1qlEmjwCmgAbjDdFvwbJjhd0uasW1hyAIcpXi7bx7z2s/edit?usp=sharing
-
-
-Handover Videos:
-
-Khushi Rajpurohit - https://drive.google.com/file/d/15arpZg7GfnLDCtajjbaDY3bdViHnn4FI/view?usp=sharing
-
-Sandeesa Rajapaksa - https://drive.google.com/file/d/1vpaf4vNWbxGXWP5zDw9-WuZiERCpqtHY/view?usp=share_link
-
-Mohammed Osamah A Almaharif - https://drive.google.com/file/d/16SF8UG-agTiL33q9yN5LBEpnWw0Gxd2J/view?usp=sharing
-
-Serena Zhou - https://drive.google.com/drive/folders/11Vqf97bm0pbGr-6IP_V0TurqJMSgJkqW?usp=sharing
-
-Aryan Majidi Mobaraki - https://drive.google.com/file/d/1utVfyzKH_cTS5TUX2pFSq7sGwOefWvuf/view?usp=sharing
 
 
 
 Creative requirements Plan:
-
-Creative REQ 3
 
 New Farming System
 Inspiration: Realistic farming system. For instance, plants need to be watered, grounds can be shovelled, etc.
@@ -86,21 +70,4 @@ place the Butterfly.
 
 Alternatively you would need to use an instance of which breaks the Open/Closed principle as well as the Liskov 
 Substitution principle.
-Req3 - Approved by Jordan May 28th 16:06
 
-Creative REQ4 Video: https://drive.google.com/file/d/1utVfyzKH_cTS5TUX2pFSq7sGwOefWvuf/view?usp=sharing
-Affection level/Factions system.
-1) There will be an Affectionable interface with Actions (which act on NPCs which are part of a faction).
-- For instance, the farmer can give items to the NPCs, which will increase their affection level towards the farmer.
-- Each NPC faction type can be affected by different actions as well:
-  - By doing good things, like planting trees, farmer can increase their standing with animal npc or hostile npc factions
-  - By giving items farmer can increase their standing with merchants npc factions
-  - By hitting CREATURE faction member with weapons, you can decrease your standing with them. 
-2) There will need to be a Faction class (higher level class); a total of 3 Factions will extend this:
-- Merchant faction
-- Hostile faction
-- Creature faction
-Your standing with a faction can affect prices or behaviour.
-- for example if your standing with the merchant faction is above 5, you get 50% price reduction for items
-- if your standing with friendly animals is less than 5, they (the animal being hit) will avoid you (move away when you move close)
-- conversely if your standing with the Hostile faction is high enough, they will be more likely to move away after attacking you
