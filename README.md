@@ -1,4 +1,4 @@
-Elden Thing game
+Elden Thing Game
 
 ```
 `7MM"""YMM  `7MMF'      `7MM"""Yb. `7MM"""YMM  `7MN.   `7MF'    MMP""MM""YMM `7MMF'  `7MMF'`7MMF'`7MN.   `7MF' .g8"""bgd  
@@ -10,7 +10,17 @@ Elden Thing game
 .JMMmmmmMMM .JMMmmmmMMM .JMMmmmdP' .JMMmmmmMMM .JML.    YM         .JMML.    .JMML.  .JMML..JMML..JML.    YM   `"bmmmdPY  
 ```
 
+This game is made by me and a 4 other teammates. When I organised our tasks, I organised it so that each person had to implement a separate aspect of the game.
+While navigating organisational challenges I implemented a farming system for the game as detailed below in the Creative requirements section as well as many other features,
+The base code was made using the code I wrote in the beginning and others contributed to different game mechanics moving forward. All contributions are documented in each file. 
+Implementing this game gave me knowledge in SOLID principles as well as all the necessary OOP knowledge I needed, including drawing up UML diagrams and sequence diagrams. 
 
+This is a 2d terminal-based game made inspired by a popular video game Elden Ring
+
+How to play:
+Use the num pad in order to move in the terminal:
+8 = North, 6 = East, 4 = West, 2 = South, 9 = North East, 7 = North West, 3 = South East, 1 = South West
+In this game there are interactable tiles if you stand on top of it, items to pick up and area effects. The goal is to defeat any bad creatures and upgrade your weapons!
 
 Creative requirements Plan:
 
